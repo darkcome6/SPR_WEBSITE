@@ -65,7 +65,7 @@ PID&ADRC实现云台精准控制。
 
 {%
   include feature.html
-  image="images/projects/rm/3.png"
+  image="images/projects/rm/s_4.jpg"
   link="projects"
   title="哨兵机器人"
   flip=false
