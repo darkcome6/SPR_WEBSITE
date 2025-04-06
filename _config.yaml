@@ -4,7 +4,8 @@ subtitle: 人生的一个转折点
 description: 九楼灯火长明,赛场我们必赢
 header: images/spr_background.jpg
 header-video: images/bgvideo.mp4
-footer: images/spr_background.jpg
+footer:  images/spr_cheer.jpg
+         images/spr_footer.jpg
 proofer: false
 slogan: 九楼灯火长明,赛场我们必赢
 # site social media and other links
