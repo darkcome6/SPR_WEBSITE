@@ -1,7 +1,7 @@
 # site properties and page defaults
-title: SPR 战队
-subtitle: 人生的一个转折点
-description: 九楼灯火长明,赛场我们必赢
+title: darkcome6DESCRIPTION=An engaging 1-3 sentence description of your lab.
+subtitle: 
+description: 
 header: images/spr_background.jpg
 header-video: images/bgvideo.mp4
 footer:  images/spr_footer.jpg
@@ -9,7 +9,7 @@ proofer: false
 slogan: 九楼灯火长明,赛场我们必赢
 # site social media and other links
 links:
-  email: contact@darkcome6DESCRIPTION=2786573564@qq.com
+  email: contact@darkcome6DESCRIPTION=An engaging 1-3 sentence description of your lab..com
   github: darkcome6DESCRIPTION=An engaging 1-3 sentence description of your lab.
   bilibili: "475402455"
   wechat: DL15936443068
