@@ -1,0 +1,95 @@
+# site properties and page defaults
+title: SPR 战队
+subtitle: 人生的一个转折点，梦想的一个启航点
+description: 九楼灯火长明,赛场我们必赢
+header: images/spr_background.jpg
+header-video: images\bgvideo.mp4
+footer:  images/spr_footer.jpg
+proofer: false
+slogan: 九楼灯火长明,赛场我们必赢
+# site social media and other links
+links:
+  email: contact@darkcome6DESCRIPTION=2786573564@qq.com
+  github: darkcome6DESCRIPTION=An engaging 1-3 sentence description of your lab.
+  bilibili: "475402455"
+  wechat: DL15936443068
+## jekyll settings
+
+# front matter defaults
+defaults:
+  # all markdown files
+  - scope:
+      path: ""
+    values:
+      layout: default
+  # markdown files in /_members
+  - scope:
+      type: "members"
+    values:
+      layout: member
+  - scope:
+      type: "awards"
+    values:
+      layout: award
+  - scope:
+      type: "events"
+    values:  
+      layout: event
+  # markdown files in /_posts
+  - scope:
+      type: "posts"
+    values:
+      layout: post
+  - scope:
+      type: "news"
+    values:
+      layout: post
+
+
+
+collections:
+  # generate page for each member
+  members:
+    output: true
+  # generate page for each post
+  posts:
+    output: true
+  awards:
+    output: true
+  news:
+    output: true
+  projects:
+    output: true
+  patents:
+    output: true
+  events:
+    output: true
+
+# jekyll plugins
+plugins:
+  - jekyll-spaceship
+  - jekyll-sitemap
+  - jekyll-redirect-from
+  - jekyll-feed
+  - jekyll-last-modified-at
+
+# code block syntax highlighting
+highlighter: rouge
+
+# jekyll theme
+theme: null
+
+# sass settings
+sass:
+  sass_dir: _styles
+
+# force jekyll to include certain files/folders
+include:
+  - _styles
+  - _scripts
+
+# force jekyll to exclude certain files/folders
+exclude:
+  - README.md
+  - LICENSE.md
+  - CITATION.cff
