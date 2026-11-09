@@ -37,6 +37,33 @@ module Jekyll
       return data
     end
 
+    # filter a list of hashes by comma-sep'd field:value pairs
+    # unlike data_filter, values are compared exactly (arrays match if they contain the value)
+    # use this for fields such as season/year where a substring match would leak across values
+    def data_filter_exact(data, filters)
+      if not data.is_a?(Array) or not filters.is_a?(String)
+        return data
+      end
+      data = data.clone
+      for filter in array_filter(filters.split(","))
+        key, value = array_filter(filter.split(":"))
+        if value == nil
+          data.select!{|d| d[key] == nil}
+        else
+          value = value.to_s.strip
+          data.select! do |d|
+            item = d[key]
+            if item.is_a?(Array)
+              item.map(&:to_s).map(&:strip).include?(value)
+            else
+              item.to_s.strip == value
+            end
+          end
+        end
+      end
+      return data
+    end
+
     # from css text, find font family definitions and construct google font url
     def google_fonts(css)
       names = regex_scan(css, '--\S*:\s*"(.*)",?.*;', false, true).sort.uniq

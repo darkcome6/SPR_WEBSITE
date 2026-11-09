@@ -1,18 +1,27 @@
 # site properties and page defaults
-title: darkcome6DESCRIPTION=An engaging 1-3 sentence description of your lab.
-subtitle: 
-description: 
+title: 中国石油大学 SPR 战队
+subtitle: RoboMaster 机器人战队
+description: 中国石油大学（北京）SPR 战队，以参加 RoboMaster 机器人比赛为主、以培养队员全面综合能力为目标的机器人团队。
+lang: zh-CN
 header: images/spr_background.jpg
 header-video: images/bgvideo.mp4
 footer:  images/spr_footer.jpg
 proofer: false
 slogan: 九楼灯火长明,赛场我们必赢
+
+# 每年换届只需要改这里：
+#   current     成员页展示的赛季号，对应 _members 里的 seasons / echelon
+#   events_year 首页「近期赛程」筛选的年份，对应 _events 里的 date
+season:
+  current: "24"
+  events_year: 2025
+
 # site social media and other links
+# 新增联系方式时注意：github 需要完整 URL，微信/邮箱不是链接的不要放这里
 links:
-  email: contact@darkcome6DESCRIPTION=An engaging 1-3 sentence description of your lab..com
-  github: darkcome6DESCRIPTION=An engaging 1-3 sentence description of your lab.
+  # email: your-address@example.com
+  github: https://github.com/darkcome6/SPR_WEBSITE
   bilibili: "475402455"
-  wechat: DL15936443068
 ## jekyll settings
 
 # front matter defaults

@@ -8,7 +8,7 @@ nav:
 # {% include icon.html icon="fa-solid fa-microscope" %}我们的成果
 
 ## 历史成绩
-狼牙战队是一个以参加RoboMaster机器人比赛为主，其余竞赛为辅，以培养队员全面综合水平目标的综合型团队。
+SPR 战队是一个以参加 RoboMaster 机器人比赛为主，其余竞赛为辅，以培养队员全面综合水平为目标的综合型团队。
 
 * 15年分区赛亚军、季军和第五名，在全国赛均进入全国三十二强；
 * 16年分区赛第五名，全国赛十六强；
@@ -126,7 +126,7 @@ option && myChart.setOption(option);
 
 {% assign awards_count =  national_awards_count | plus: international_awards_count | plus: provincial_awards_count | plus: other_awards_count %}
 
-根据不完全统计，狼牙战队已经获得了总计 {{awards_count}} 项奖项。
+根据不完全统计，SPR 战队已经获得了总计 {{awards_count}} 项奖项。
 <table>
 <tr>
   <td>国家级奖项</td>
@@ -165,7 +165,7 @@ option && myChart.setOption(option);
 {% include search-box.html %}
 {% include search-info.html %}
 
-根据不完全统计，狼牙战队已经获得了总计 {{site.projects | size}} 项大创项目。
+根据不完全统计，SPR 战队已经获得了总计 {{site.projects | size}} 项大创项目。
 
 {% include list.html data="projects" component="projects" style="simple" %}
 
@@ -176,7 +176,7 @@ option && myChart.setOption(option);
 {% include search-box.html %}
 {% include search-info.html %}
 
-根据不完全统计，狼牙战队已经获得了总计 {{site.patents | size}} 项专利。
+根据不完全统计，SPR 战队已经获得了总计 {{site.patents | size}} 项专利。
 
 {% include list.html data="patents" component="patents" style="simple" %}
 

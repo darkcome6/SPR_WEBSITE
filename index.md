@@ -16,7 +16,7 @@
   include button.html
   type="github"
   text="GitHub"
-  link="HUSTLYRM"
+  link="https://github.com/darkcome6/SPR_WEBSITE"
 %}
 {%
   include button.html
@@ -28,9 +28,11 @@
 {% include section.html %}
 
 ## 近期赛程
-更多赛程请查看[历史赛程](/events)
+更多赛程请查看[历史赛程]({{ "/events" | relative_url }})
 
-{% include list.html data="events" component="events" style="rich" filters="date: 2025"%}
+{% assign events_year = site.season.events_year %}
+{% capture f_events_year %}date: {{ events_year }}{% endcapture %}
+{% include list.html data="events" component="events" style="rich" filters=f_events_year %}
 {% include section.html %}
 
 ## 高光时刻
