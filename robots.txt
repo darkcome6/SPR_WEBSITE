@@ -1,1 +1,4 @@
+User-agent: *
+Allow: /
+
 Sitemap: https://darkcome6.github.io/SPR_WEBSITE/sitemap.xml
