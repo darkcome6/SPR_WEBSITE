@@ -235,6 +235,22 @@ def check_posts_and_news() -> None:
         print(f"{label}: {count} 篇")
 
 
+def check_cname() -> None:
+    path = ROOT / "CNAME"
+    if not path.is_file():
+        return
+    lines = [line.strip() for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    if len(lines) != 1:
+        errors.append(
+            f"CNAME: 必须只包含一行域名（当前 {len(lines)} 行：{lines}），"
+            "多行会让 GitHub Pages 配置失效并导致 baseurl 异常"
+        )
+        return
+    domain = lines[0]
+    if "://" in domain or "/" in domain:
+        errors.append(f"CNAME: 只能写裸域名，不要带协议或路径 — {domain}")
+
+
 def check_pages() -> None:
     for path in sorted(ROOT.glob("*.md")) + sorted(ROOT.glob("*/index.md")):
         if path.name == "README.md":
@@ -261,6 +277,7 @@ def main() -> int:
     check_awards(member_names, strict)
     check_events(config)
     check_posts_and_news()
+    check_cname()
     check_pages()
 
     print()

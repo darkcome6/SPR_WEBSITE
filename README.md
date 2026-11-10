@@ -6,6 +6,31 @@
 - 构建产物：`gh-pages`，由 GitHub Actions 自动生成，手改会被覆盖
 - 线上地址：<https://darkcome6.github.io/SPR_WEBSITE>
 
+## 域名与部署
+
+当前使用 GitHub Pages 默认地址：<https://darkcome6.github.io/SPR_WEBSITE>
+
+仓库里**没有** `CNAME` 文件。原先的 `CNAME` 写了两行域名（GitHub Pages 不支持，会静默失效），
+且两个域名都无法访问，已移除。
+
+### 换成自己的域名
+
+只需要买域名，**不需要服务器，也不需要 ICP 备案**（GitHub Pages 服务器在境外）。
+
+1. DNS 解析：
+   - `CNAME  www   → darkcome6.github.io`
+   - `A      @     → 185.199.108.153 / .109.153 / .110.153 / .111.153`
+2. 新建 `CNAME` 文件，**只写一行**裸域名，例如：
+   ```
+   spr-robomaster.com
+   ```
+3. 仓库 Settings → Pages 填自定义域名并勾选 *Enforce HTTPS*。
+
+注意：换自定义域名后站点从 `darkcome6.github.io/SPR_WEBSITE/` 变为域名根路径，
+旧链接会 404。因为全站统一用 `relative_url`，站内链接会自动跟着变对。
+
+`tools/validate_content.py` 会检查 `CNAME` 是否为单行裸域名。
+
 ## 本地预览
 
 ```bash
