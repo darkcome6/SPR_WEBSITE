@@ -116,6 +116,24 @@ JEKYLL_NO_BUNDLER_REQUIRE=true jekyll _4.3.2_ build --baseurl /SPR_WEBSITE
 `JEKYLL_NO_BUNDLER_REQUIRE=true` 是为了跳过 `Gemfile` 里的 `html-proofer`（它要求 Ruby ≥ 3.1，
 而 `proofer: false` 时构建根本用不到它）。产物在 `_site/`。
 
+## 批量导入内容
+
+成员/荣誉/赛程等数据可以先填在 `data-inbox/` 的 CSV 里，再一次性转成 Markdown：
+
+```bash
+python tools/import_content.py                      # 演练，只列出会生成/覆盖哪些文件
+python tools/import_content.py --write              # 真正写入
+python tools/import_content.py --write --only members,awards
+```
+
+约定：
+
+- 多值字段用 `|` 分隔，例如 `seasons` 写 `24|25`、`members` 写 `张三|李四`
+- 空单元格表示该字段不写入 front matter
+- 同名记录会自动加序号，不会互相覆盖
+- `data-inbox/` 已在 `_config.yaml` 的 `exclude` 中，草稿不会发布到线上
+- 导入后务必运行 `tools/validate_content.py` 检查
+
 ## 内容校验
 
 `tools/validate_content.py` 会检查：
