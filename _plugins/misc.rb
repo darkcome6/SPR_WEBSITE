@@ -1,5 +1,9 @@
 require 'liquid'
-require 'html-proofer'
+begin
+  require 'html-proofer'
+rescue LoadError
+  # html-proofer 只在 proofer 开启时使用，缺失时不应阻断构建
+end
 
 module Jekyll
   module MiscFilters

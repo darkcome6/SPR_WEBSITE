@@ -6,12 +6,12 @@ nav:
 ---
 
 {%- comment -%}
-每年换届只改 _config.yaml 里的 season.current，本页无需改动。
-筛选一律走 exact_filters（精确匹配 seasons），避免 "24" 误命中 "24/25"。
+每年换届只改 _config.yaml 里的 season.current，本页不需要改动。
 {%- endcomment -%}
 {% assign season = site.season.current %}
 {% capture f_season %}seasons: {{ season }}{% endcapture %}
 {% capture f_echelon %}echelon: {{ season }}{% endcapture %}
+{% capture f_leader %}type: {{ season }}赛季团队负责人{% endcapture %}
 
 # {% include icon.html icon="fa-solid fa-users" %}{{ season }} 赛季团队成员
 {% include search-box.html %}
@@ -20,47 +20,27 @@ nav:
 
 {% include section.html %}
 
-## {% include icon.html icon="fa-solid fa-users" %}指导老师
+{% include group.html title="指导老师" filters="role: 指导老师" %}
 
-{% include list_portrait.html data="members" component="portrait" filters="role: 指导老师" %}
+{% include group.html title="团队负责人" exact_filters=f_leader %}
 
-## {% include icon.html icon="fa-solid fa-users" %}团队负责人
-{% include list_portrait.html data="members" component="portrait" filters="type: 团队负责人" exact_filters=f_season %}
+{% include group.html title="机械组" filters="role: 机械组" exact_filters=f_season style="small" %}
 
-## {% include icon.html icon="fa-solid fa-users" %}机械组
-  
-{% include list_portrait.html data="members" component="portrait" filters="role: 机械组" exact_filters=f_season style="small" %}
+{% include group.html title="电路组" filters="role: 电路组" exact_filters=f_season style="small" %}
 
-## {% include icon.html icon="fa-solid fa-users" %}电路组
+{% include group.html title="嵌软组" filters="role: 嵌软组" exact_filters=f_season style="small" %}
 
-{% include list_portrait.html data="members" component="portrait" filters="role: 电路组" exact_filters=f_season style="small" %}
-## {% include icon.html icon="fa-solid fa-users" %}嵌软组
+{% include group.html title="算法组" filters="role: 算法组" exact_filters=f_season style="small" %}
 
-{% include list_portrait.html data="members" component="portrait" filters="role: 嵌软组" exact_filters=f_season style="small" %}
-## {% include icon.html icon="fa-solid fa-users" %}算法组
+{% include group.html title="运营组" filters="role: 运营组" exact_filters=f_season style="small" %}
 
-{% include list_portrait.html data="members" component="portrait" filters="role: 算法组" exact_filters=f_season style="small" %}
-## {% include icon.html icon="fa-solid fa-users" %}运营组
-
-{% include list_portrait.html data="members" component="portrait" filters="role: 运营组" exact_filters=f_season style="small" %}
-
-## {% include icon.html icon="fa-solid fa-users" %}梯队
-
-{% include list_portrait.html data="members" component="portrait" exact_filters=f_echelon style="tiny" %}
+{% include group.html title="梯队" exact_filters=f_echelon style="tiny" %}
 
 {% include section.html background="images/background.jpg" dark=true %}
 
 从 SPR 走出的优秀人才，他们在各自领域取得了优异的成绩，是 SPR 战队的骄傲和榜样。
 
 {% include section.html %}
-
-{% capture content %}
-
-
-
-{% endcapture %}
-
-{% include grid.html style="square" content=content %}
 
 # 杰出人物
 

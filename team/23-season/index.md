@@ -1,58 +1,36 @@
 ---
-title: 成员
+title: 23 赛季成员
+season: "23"
 ---
 
-# {% include icon.html icon="fa-solid fa-users" %}24 赛季团队成员
+{%- comment -%}
+归档页：只改 front matter 里的 season，其他都不用动。
+新增归档时复制本文件到 team/<赛季>-season/index.md，改 season 与 title 即可。
+{%- endcomment -%}
+{% assign season = page.season %}
+{% capture f_season %}seasons: {{ season }}{% endcapture %}
+{% capture f_echelon %}echelon: {{ season }}{% endcapture %}
+{% capture f_leader %}type: {{ season }}赛季团队负责人{% endcapture %}
+
+# {% include icon.html icon="fa-solid fa-users" %}{{ season }} 赛季团队成员
 {% include search-box.html %}
 {% include search-info.html %}
-历史成员请参考[历届成员](/team/history)。
+历史成员请参考[历届成员]({{ "/team/history" | relative_url }})。
 
 {% include section.html %}
 
-## {% include icon.html icon="fa-solid fa-users" %}指导老师
+{% include group.html title="指导老师" filters="role: 指导老师" %}
 
-{% include list_portrait.html data="members" component="portrait" filters="role: 指导老师" %}
+{% include group.html title="团队负责人" exact_filters=f_leader %}
 
-## {% include icon.html icon="fa-solid fa-users" %}团队负责人
-{% include list_portrait.html data="members" component="portrait" filters="type: 24赛季团队负责人,time: 24" style="small"  %}
+{% include group.html title="机械组" filters="role: 机械组" exact_filters=f_season style="small" %}
 
-## {% include icon.html icon="fa-solid fa-users" %}机械组
-  
-{% include list_portrait.html data="members" component="portrait" filters="role: 机械组, time:24" style="small" %}
+{% include group.html title="电路组" filters="role: 电路组" exact_filters=f_season style="small" %}
 
-## {% include icon.html icon="fa-solid fa-users" %}电路组
+{% include group.html title="嵌软组" filters="role: 嵌软组" exact_filters=f_season style="small" %}
 
-{% include list_portrait.html data="members" component="portrait" filters="role: 电路组, time:24" style="small" %}
-## {% include icon.html icon="fa-solid fa-users" %}嵌软组
+{% include group.html title="算法组" filters="role: 算法组" exact_filters=f_season style="small" %}
 
-{% include list_portrait.html data="members" component="portrait" filters="role: 嵌软组,time: 24" style="small"  %}
-## {% include icon.html icon="fa-solid fa-users" %}算法组
+{% include group.html title="运营组" filters="role: 运营组" exact_filters=f_season style="small" %}
 
-{% include list_portrait.html data="members" component="portrait" filters="role: 算法组, time:24" style="small" %}
-## {% include icon.html icon="fa-solid fa-users" %}运营组
-
-{% include list_portrait.html data="members" component="portrait" filters="role: 运营组, time:24" style="small" %}
-
-## {% include icon.html icon="fa-solid fa-users" %}梯队
-{% include list_portrait.html data="members" component="portrait" filters="echelon: 24" style="tiny" %}
-
-
-
-
-{% include section.html background="images/background.jpg" dark=true %}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-
-{% include section.html %}
-
-{% capture content %}
-
-{% include figure.html image="images/photo.jpg" %}
-{% include figure.html image="images/photo.jpg" %}
-{% include figure.html image="images/photo.jpg" %}
-
-{% endcapture %}
-
-{% include grid.html style="square" content=content %}
+{% include group.html title="梯队" exact_filters=f_echelon style="tiny" %}

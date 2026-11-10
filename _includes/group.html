@@ -1,0 +1,20 @@
+{%- comment -%}
+分组展示成员：先按 filters / exact_filters 过滤，为空则整块（标题 + 列表）都不渲染，
+避免某个赛季某组没人时页面上留下空标题。
+
+用法：
+  {% include group.html title="机械组" filters="role: 机械组" exact_filters=f_season %}
+可选参数：icon（默认 users 图标）、style（small/tiny）、data（默认 members）、component（默认 portrait）
+{%- endcomment -%}
+{% assign group_data_name = include.data | default: "members" %}
+{% assign group_component = include.component | default: "portrait" %}
+{% assign group_icon = include.icon | default: "fa-solid fa-users" %}
+
+{% assign group_data = site[group_data_name] | default: site.data[group_data_name] %}
+{% assign group_data = group_data | data_filter: include.filters | data_filter_exact: include.exact_filters %}
+
+{% if group_data.size > 0 %}
+## {% include icon.html icon=group_icon %}{{ include.title }}
+
+{% include list_portrait.html data=group_data_name component=group_component filters=include.filters exact_filters=include.exact_filters style=include.style %}
+{% endif %}

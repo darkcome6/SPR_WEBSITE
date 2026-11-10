@@ -7,7 +7,7 @@ title: 所有成员
 {% include search-box.html %}
 {% include search-info.html %}
 
-按年检索历史成员请参考[历届成员](/team/history)。
+按年检索历史成员请参考[历届成员]({{ "/team/history" | relative_url }})。
 
 {% include section.html %}
 

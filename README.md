@@ -34,6 +34,16 @@ bundle exec jekyll serve --baseurl ""
 
 `_styles/` 和 `_scripts/` 下的文件会被自动注入页面，新增文件无需改模板。
 
+### 成员分组组件
+
+`_includes/group.html` 负责「标题 + 成员列表」，**列表为空时整块不渲染**（避免某赛季某组没人时留下空标题）：
+
+```liquid
+{% include group.html title="机械组" filters="role: 机械组" exact_filters=f_season style="small" %}
+```
+
+可选参数：`icon`、`style`（`small`/`tiny`）、`data`、`component`。
+
 ## 每年换届怎么做
 
 1. 改 `_config.yaml`：
@@ -58,11 +68,28 @@ bundle exec jekyll serve --baseurl ""
    ```
 3. 老成员只需在 `seasons` 里加上新赛季，`time` 同步更新。
 4. 新赛季的 `_events`、`_awards` 正常新增即可，不用改任何模板。
-5. 跑一遍校验，确认没有静默失效：
+5. 需要归档上一赛季成员时，把 `team/23-season/` 复制成 `team/<赛季>-season/`，只改 front matter 的 `season` 和 `title`，再到 `team/history/index.md` 加一行链接。
+6. 跑一遍校验，确认没有静默失效：
 
 ```bash
 python tools/validate_content.py
 ```
+
+## 本地构建（Windows 用户注意）
+
+`jekyll-last-modified-at` 依赖 `posix-spawn`，**只支持 POSIX，Windows 下无法安装**。
+所以在 Windows 上请用 WSL 构建：
+
+```bash
+wsl -d Ubuntu-22.04
+sudo apt install -y ruby-full build-essential zlib1g-dev libyaml-dev
+sudo gem install jekyll -v 4.3.2
+cd /mnt/e/code/SPR/SPR_WEBSITE
+JEKYLL_NO_BUNDLER_REQUIRE=true jekyll _4.3.2_ build --baseurl /SPR_WEBSITE
+```
+
+`JEKYLL_NO_BUNDLER_REQUIRE=true` 是为了跳过 `Gemfile` 里的 `html-proofer`（它要求 Ruby ≥ 3.1，
+而 `proofer: false` 时构建根本用不到它）。产物在 `_site/`。
 
 ## 内容校验
 
