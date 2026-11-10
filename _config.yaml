@@ -102,3 +102,10 @@ exclude:
   - README.md
   - LICENSE.md
   - CITATION.cff
+  - Gemfile
+  - Gemfile.lock
+  - generate_member.py
+  - tools
+  - .github
+  - .docker
+  - .vscode
