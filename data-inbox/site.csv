@@ -1,0 +1,15 @@
+key,value,note
+title,中国石油大学 SPR 战队,浏览器标题与页头
+subtitle,RoboMaster 机器人战队,页头副标题
+description,中国石油大学（北京）SPR 战队，以参加 RoboMaster 机器人比赛为主、以培养队员全面综合能力为目标的机器人团队。,SEO/分享卡片
+slogan,九楼灯火长明，赛场我们必赢,页头标语
+season_current,25,成员页展示的赛季号
+season_events_year,2025,首页「近期赛程」筛选年份
+link_email,xxx@example.com,页脚邮箱按钮；不需要就留空
+link_wechat,微信号或留空,页脚微信按钮；不填则隐藏
+link_bilibili,475402455,B 站空间数字 ID
+link_github,https://github.com/xxx,GitHub 主页完整 URL
+contact_address,北京市昌平区中国石油大学 学活 415,联系页
+contact_map,https://surl.amap.com/xxxx,地图链接
+contact_email,hustrobomaster@163.com,联系页展示的邮箱
+contact_wechat,bao1037rm,联系页展示的微信号

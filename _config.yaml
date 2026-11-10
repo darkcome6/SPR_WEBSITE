@@ -106,6 +106,7 @@ exclude:
   - Gemfile.lock
   - generate_member.py
   - tools
+  - data-inbox
   - .github
   - .docker
   - .vscode
