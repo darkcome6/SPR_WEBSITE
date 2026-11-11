@@ -11,6 +11,7 @@ nav:
 
 {% include section.html %}
 
+{% if site.posts.size > 0 %}
 {% include search-box.html %}
 
 {% include tags.html tags=site.tags %}
@@ -18,3 +19,6 @@ nav:
 {% include search-info.html %}
 
 {% include list.html data="posts" component="post-excerpt" %}
+{% else %}
+暂无文章。
+{% endif %}

@@ -9,8 +9,12 @@ nav:
 
 {% include section.html %}
 
+{% if site.news.size > 0 %}
 {% include search-box.html %}
 
 {% include search-info.html %}
 
 {% include list.html data="news" component="post-excerpt" %}
+{% else %}
+暂无新闻。
+{% endif %}

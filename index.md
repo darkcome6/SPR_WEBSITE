@@ -70,15 +70,19 @@
   style="bare"
 %}
 
+{% assign events_year = site.season.events_year %}
+{% capture f_events_year %}date: {{ events_year }}{% endcapture %}
+{% assign season_events = site.events | data_filter: f_events_year %}
+
+{% if season_events.size > 0 %}
 {% include section.html %}
 
 ## 近期赛程
 
 更多赛程请查看[历史赛程]({{ "/events" | relative_url }})
 
-{% assign events_year = site.season.events_year %}
-{% capture f_events_year %}date: {{ events_year }}{% endcapture %}
 {% include list.html data="events" component="events" style="rich" filters=f_events_year %}
+{% endif %}
 
 {% include section.html %}
 
