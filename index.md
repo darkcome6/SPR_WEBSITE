@@ -1,9 +1,30 @@
 ---
 ---
 
-# 中国石油大学 SPR战队 
+{% assign season = site.season.current %}
 
-中国石油大学RoboMaster团队（SPR战队）是中国石油大学机械与储运工程学院最耀眼的团队之一，是一个以参加RoboMaster机器人比赛为主，以培养队员全面综合水平为目标的综合型团队。
+# 中国石油大学 SPR 战队
+
+中国石油大学 RoboMaster 团队（SPR 战队）是中国石油大学机械与储运工程学院最耀眼的团队之一，是一个以参加 RoboMaster 机器人比赛为主、以培养队员全面综合水平为目标的综合型团队。
+
+<div class="stats">
+  <div class="stats-item">
+    <span class="stats-value">{{ site.data.seasons | size }}</span>
+    <span class="stats-label">个赛季</span>
+  </div>
+  <div class="stats-item">
+    <span class="stats-value">{{ site.members | size }}</span>
+    <span class="stats-label">名成员</span>
+  </div>
+  <div class="stats-item">
+    <span class="stats-value">{{ site.awards | size }}</span>
+    <span class="stats-label">项荣誉</span>
+  </div>
+  <div class="stats-item">
+    <span class="stats-value">{{ site.events | size }}</span>
+    <span class="stats-label">场比赛</span>
+  </div>
+</div>
 
 {%
   include button.html
@@ -25,36 +46,52 @@
   icon="fa-brands fa-weixin"
   link="https://mp.weixin.qq.com/s/Zrk4PRRGSimJG9bVDj3Zsg"
 %}
+
+{% include section.html %}
+
+## 一代代 SPR
+
+从第一支队伍到现在，每个赛季都留下一批人、一批车、一批故事。
+
+{% include timeline.html %}
+
+{% include section.html %}
+
+## 20{{ season }} 赛季的我们
+
+{% include member-wall.html limit=30 %}
+
+{%
+  include button.html
+  link="team"
+  text="查看全部成员"
+  icon="fa-solid fa-arrow-right"
+  flip=true
+  style="bare"
+%}
+
 {% include section.html %}
 
 ## 近期赛程
+
 更多赛程请查看[历史赛程]({{ "/events" | relative_url }})
 
 {% assign events_year = site.season.events_year %}
 {% capture f_events_year %}date: {{ events_year }}{% endcapture %}
 {% include list.html data="events" component="events" style="rich" filters=f_events_year %}
+
 {% include section.html %}
 
-## 高光时刻
+## 继续了解
 
 {% capture text %}
 
-<ul>
-  <li>15年分区赛亚军、季军和第五名，在全国赛均进入全国三十二强；</li>
-  <li>16年分区赛第五名，全国赛十六强；</li>
-  <li>17年分区赛亚军，全国赛十六强；</li>
-  <li>18年分区赛季军，全国赛三十二强；</li>
-  <li>19年分区赛八强，全国赛三十二强；</li>
-  <li>20年国家级二等奖；</li>
-  <li>21年分区赛十六强；</li>
-  <li>22年分区赛八强，全国赛国家级一等奖；</li>
-  <li>23年分区赛十六强，全国赛四十六强，国家级二等奖；</li>
-  <li>24年分区赛殿军，全国赛二十八强，国家级二等奖。</li>
-</ul>
+分区赛、全国赛、各类学科竞赛的成绩与专利、大创项目，都汇总在成果页。
+
 {%
   include button.html
   link="research"
-  text="我们的更多成果"
+  text="我们的成果"
   icon="fa-solid fa-arrow-right"
   flip=true
   style="bare"
@@ -66,68 +103,19 @@
   include feature.html
   image="images/cheer.jpg"
   link="research"
-  title="我们的成果"
-  text=text
-%}
-
-{% capture text %}
-
-作为一个多学科交叉的机器人团队，我们与企业、学校等多方面展开合作。推动科技创新，人才培养。
-
-{%
-  include button.html
-  link="projects"
-  text="我们的所有项目"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-
-{% endcapture %}
-
-{%
-  include feature.html
-  image="images/cooporate.jpeg"
-  link="projects"
-  title="我们的项目"
-  flip=true
-  style="bare"
+  title="成果与荣誉"
   text=text
 %}
 
 
-
-
-{% capture text %}
-这里聚集了机械、电路、嵌软、算法、运营多方面的人才。
-
-{%
-  include button.html
-  link="team"
-  text="我们的所有成员"
-  icon="fa-solid fa-arrow-right"
-  flip=true
-  style="bare"
-%}
-
-{% endcapture %}
-
-{%
-  include feature.html
-  image="images/background.jpg"
-  link="team"
-  title="我们的成员"
-  text=text
-%}
-
 {% capture text %}
 
-我们活跃于各种社会活动，积极展现SPR风采。
+备赛、比赛、团建的影像与故事，以及战队的最新动态。
 
 {%
   include button.html
   link="news"
-  text="我们的最近动态"
+  text="最新动态"
   icon="fa-solid fa-arrow-right"
   flip=true
   style="bare"
@@ -139,7 +127,7 @@
   include feature.html
   image="images/news.jpeg"
   link="news"
-  title="我们的新闻"
+  title="记忆与动态"
   flip=true
   style="bare"
   text=text

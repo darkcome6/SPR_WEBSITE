@@ -1,0 +1,16 @@
+{%- comment -%}
+成员墙：按赛季铺头像，用于首页快速建立「这些人一起打过比赛」的印象。
+参数：season（默认 site.season.current）、limit（默认不限制）、exclude_role（默认排除指导老师）
+{%- endcomment -%}
+{% assign wall_season = include.season | default: site.season.current %}
+{% assign wall_exclude = include.exclude_role | default: "指导老师" %}
+{% capture wall_filter %}seasons: {{ wall_season }}{% endcapture %}
+{% assign wall = site.members | data_filter_exact: wall_filter %}
+
+<div class="member-wall">
+  {% for m in wall limit: include.limit %}
+    {% if m.role != wall_exclude %}
+      {% include portrait.html lookup=m.slug style="tiny" %}
+    {% endif %}
+  {% endfor %}
+</div>

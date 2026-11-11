@@ -144,17 +144,25 @@ option && myChart.setOption(option);
 
 
 
+{% if national_awards_count > 0 %}
 ### 国家级
-{% include list.html data="awards" component="awards" style="rich" filters="type: 国家级" %} 
+{% include list.html data="awards" component="awards" style="rich" filters="type: 国家级" %}
+{% endif %}
 
+{% if international_awards_count > 0 %}
 ### 国际级
-{% include list.html data="awards" component="awards" style="simple" filters="type: 国际级" %} 
+{% include list.html data="awards" component="awards" style="simple" filters="type: 国际级" %}
+{% endif %}
 
+{% if provincial_awards_count > 0 %}
 ### 省级
-{% include list.html data="awards" component="awards" style="simple" filters="type: 省级"%}
+{% include list.html data="awards" component="awards" style="simple" filters="type: 省级" %}
+{% endif %}
 
+{% if other_awards_count > 0 %}
 ### 其他类型
-{% include list.html data="awards" component="awards" style="simple" filters="type: 其他"%}
+{% include list.html data="awards" component="awards" style="simple" filters="type: 其他" %}
+{% endif %}
 
 
 

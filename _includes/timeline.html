@@ -1,0 +1,36 @@
+{%- comment -%}
+赛季时间轴：把「赛季」作为传承主线，从新到旧纵向排列。
+数据来自 _data/seasons.yaml；成员数按 _members 的 seasons 自动统计。
+{%- endcomment -%}
+<div class="timeline">
+  {% for s in site.data.seasons %}
+    {% capture f_season %}seasons: {{ s.season }}{% endcapture %}
+    {% assign s_members = site.members | data_filter_exact: f_season %}
+    {% assign s_url = s.url | default: "" %}
+    <article class="timeline-item">
+      <div class="timeline-marker">
+        <span class="timeline-year">{{ s.year }}</span>
+        <span class="timeline-season">S{{ s.season }}</span>
+      </div>
+      <div class="timeline-card">
+        {% if s.cover %}
+          <a class="timeline-cover" href="{{ s_url | relative_url }}" aria-label="{{ s.title }}">
+            <img src="{{ s.cover | relative_url }}" alt="{{ s.title }} 合影" loading="lazy" {% include fallback.html %}>
+          </a>
+        {% endif %}
+        <div class="timeline-text">
+          <h3 class="timeline-title">{{ s.title }}</h3>
+          <p class="timeline-badges">
+            {% if s.rank %}<span class="badge">{{ s.rank }}</span>{% endif %}
+            {% if s.award %}<span class="badge">{{ s.award }}</span>{% endif %}
+            <span class="badge">{{ s_members.size }} 名成员</span>
+          </p>
+          {% if s.summary %}<p class="timeline-summary">{{ s.summary }}</p>{% endif %}
+          {% if s_url %}
+            <a class="timeline-link" href="{{ s_url | relative_url }}">进入 {{ s.year }} 赛季 →</a>
+          {% endif %}
+        </div>
+      </div>
+    </article>
+  {% endfor %}
+</div>
