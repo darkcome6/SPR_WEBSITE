@@ -67,10 +67,11 @@ collections:
     output: true
   news:
     output: true
+  # 大创项目与专利不对外展示，数据保留在 _projects / _patents 中备用
   projects:
-    output: true
+    output: false
   patents:
-    output: true
+    output: false
   events:
     output: true
 
