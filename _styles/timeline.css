@@ -190,4 +190,27 @@
   opacity: 0.7;
 }
 
+.history-list {
+  max-width: 760px;
+  margin: 0 auto;
+  padding-left: 0;
+  list-style: none;
+}
+.history-list li {
+  display: flex;
+  gap: 14px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--light-gray);
+}
+.history-list li:last-child {
+  border-bottom: none;
+}
+
+.history-year {
+  flex: 0 0 56px;
+  font-family: var(--title);
+  font-weight: var(--bold);
+  color: var(--primary);
+}
+
 /*# sourceMappingURL=timeline.css.map */
