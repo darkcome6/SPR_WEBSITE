@@ -1,0 +1,24 @@
+{%- comment -%}
+站点 logo：按 svg > png > jpg 的优先级自动选择 images/logo.*，
+页头与页脚共用，避免两处各处写死导致不一致（例如页头已换新标、页脚还是旧图）。
+
+参数：height（可选，覆盖默认高度）
+{%- endcomment -%}
+{% assign logo_svg = "images/logo.svg" | file_exists %}
+{% assign logo_png = "images/logo.png" | file_exists %}
+{% assign logo_jpg = "images/logo.jpg" | file_exists %}
+{% assign logo_file = logo_svg | default: logo_png | default: logo_jpg %}
+
+{% if logo_file %}
+  {% if logo_svg %}
+    <span class="logo"{% if include.height %} style="height: {{ include.height }}"{% endif %}>
+      {{ logo_svg | file_read }}
+    </span>
+  {% else %}
+    <img
+      src="{{ logo_file | relative_url }}"
+      alt="{{ site.title }}"
+      {% if include.height %}style="height: {{ include.height }}"{% endif %}
+    >
+  {% endif %}
+{% endif %}

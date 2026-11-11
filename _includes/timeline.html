@@ -26,7 +26,7 @@
             <span class="badge">{{ s_members.size }} 名成员</span>
           </p>
           {% if s.summary %}<p class="timeline-summary">{{ s.summary }}</p>{% endif %}
-          {% if s_url %}
+          {% if s_url != "" %}
             <a class="timeline-link" href="{{ s_url | relative_url }}">进入 {{ s.year }} 赛季 →</a>
           {% endif %}
         </div>

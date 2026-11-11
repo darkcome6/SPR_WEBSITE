@@ -2,10 +2,10 @@
 title: 项目
 nav:
   order: 2
-  tooltip: 校企合作、科研项目
+  tooltip: 我们做过的机器人
 ---
 
-# {% include icon.html icon="fa-solid fa-wrench" %}我们的项目
+# {% include icon.html icon="fa-solid fa-wrench" %}我们做过的机器人
 
 ## RoboMaster 机器人项目
 
