@@ -1,0 +1,58 @@
+{%- comment -%}
+赛季成绩趋势图：数据来自 _data/seasons.yaml 的 rank_value 字段
+（该字段填全国赛名次数字，越小越好）。
+没有任何赛季填 rank_value 时不渲染，避免出现空图表。
+{%- endcomment -%}
+{% assign chart = site.data.seasons | where_exp: "s", "s.rank_value != nil" | sort: "year" %}
+
+{% if chart.size > 0 %}
+<div id="season-rank-chart" style="width: 100%; height: 300px;"></div>
+
+<script>
+(function () {
+  var seasons = [
+    {% for s in chart %}
+    { year: "{{ s.year }}", value: {{ s.rank_value }}, note: {{ s.rank | default: "" | jsonify }} }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ];
+
+  function render() {
+    var el = document.getElementById("season-rank-chart");
+    if (!el || typeof echarts === "undefined") return;
+
+    echarts.init(el).setOption({
+      tooltip: {
+        trigger: "axis",
+        formatter: function (params) {
+          var point = params[0];
+          var extra = seasons[point.dataIndex].note;
+          return point.axisValue + "<br/>全国赛排名：" + point.value + (extra ? "<br/>" + extra : "");
+        }
+      },
+      xAxis: {
+        type: "category",
+        data: seasons.map(function (s) { return s.year; })
+      },
+      yAxis: {
+        type: "value",
+        inverse: true,
+        minInterval: 1,
+        name: "名次"
+      },
+      series: [{
+        type: "line",
+        smooth: true,
+        symbolSize: 8,
+        data: seasons.map(function (s) { return s.value; })
+      }]
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", render);
+  } else {
+    render();
+  }
+})();
+</script>
+{% endif %}

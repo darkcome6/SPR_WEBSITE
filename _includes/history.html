@@ -1,0 +1,16 @@
+{%- comment -%}
+历史成绩：由 _data/seasons.yaml 自动生成，按年份从旧到新。
+只列出填了 rank 或 award 的赛季，避免出现空行。
+{%- endcomment -%}
+{% assign history = site.data.seasons | where_exp: "s", "s.rank != nil or s.award != nil" | sort: "year" %}
+
+{% if history.size > 0 %}
+<ul class="history-list">
+  {% for s in history %}
+    <li>
+      <span class="history-year">{{ s.year }}</span>
+      {% if s.rank %}{{ s.rank }}{% endif %}{% if s.rank and s.award %}，{% endif %}{% if s.award %}{{ s.award }}{% endif %}
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}

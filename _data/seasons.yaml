@@ -1,46 +1,51 @@
-# 赛季主线数据：首页时间轴按此渲染，从新到旧排列。
-# 每年新增一个赛季时，在最前面加一条即可。
-#   season  赛季号（与 _members 的 seasons 对应）
-#   year    年份（时间轴徽章显示）
-#   title   赛季标题
-#   rank    赛事名次（可留空）
-#   award   奖项等级（可留空）
-#   cover   封面图，建议放队伍合影；留空则不显示图
-#   summary 一句话赛季记忆
-#   url     点击跳转的页面，留空则卡片不可点击
+# 赛季主线数据：首页时间轴与成果页「历史成绩 / 积分榜排名」共用这一份。
+# 从新到旧排列，每年新增赛季时在最前面加一条。
+#   season      赛季号（与 _members 的 seasons 对应）
+#   year        年份
+#   title       赛季标题
+#   rank        赛事名次文字，显示在徽章与历史成绩里；留空则不显示
+#   award       奖项等级文字；留空则不显示
+#   rank_value  全国赛名次数字（越小越好），只有填了才会出现在积分榜趋势图里
+#   cover       封面图，建议放队伍合影；留空则不显示图
+#   summary     一句话赛季记忆
+#   url         点击跳转的页面，留空则卡片不可点击
 
 - season: "25"
   year: 2025
   title: 2025 赛季
   rank:
   award:
+  rank_value:
   cover: images/cheer.jpg
-  summary: 新一轮周期，重新搭建机械、电控与视觉体系。
+  summary:
   url:
 
 - season: "24"
   year: 2024
   title: 2024 赛季
-  rank: 全国赛二十八强
-  award: 国家级二等奖
+  rank:
+  award:
+  rank_value:
   cover: images/spr_cheer.jpg
-  summary: 分区赛殿军，全国赛止步二十八强。
+  summary:
   url: team/
 
 - season: "23"
   year: 2023
   title: 2023 赛季
-  rank: 全国赛四十六强
-  award: 国家级二等奖
+  rank:
+  award:
+  rank_value:
   cover: images/background.jpg
-  summary: 分区赛十六强，全国赛四十六强。
+  summary:
   url: team/23-season/
 
 - season: "22"
   year: 2022
   title: 2022 赛季
-  rank: 分区赛八强
-  award: 国家级一等奖
+  rank:
+  award:
+  rank_value:
   cover: images/cooporate.jpeg
-  summary: 分区赛八强，全国赛线上评选获国家级一等奖。
+  summary:
   url:

@@ -1,0 +1,27 @@
+{%- comment -%}
+高光时刻：由 _data/highlights.yaml 渲染；数组为空时整块不显示。
+{%- endcomment -%}
+{% if site.data.highlights.size > 0 %}
+{% for h in site.data.highlights %}
+<div class="card">
+  <div class="card-text">
+    <div class="card-title">{{ h.title }}</div>
+
+    {{ h.desc }}
+  </div>
+  {% if h.bvid %}
+  <div class="card-image">
+    <iframe
+      src="//player.bilibili.com/player.html?isOutside=true&bvid={{ h.bvid }}&p=1"
+      scrolling="no"
+      border="0"
+      frameborder="no"
+      framespacing="0"
+      allowfullscreen="true"
+      mute="true"
+    ></iframe>
+  </div>
+  {% endif %}
+</div>
+{% endfor %}
+{% endif %}

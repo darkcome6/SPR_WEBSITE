@@ -50,9 +50,11 @@ bundle exec jekyll serve --baseurl ""
 | 获奖 | `_awards/<奖项>.md` |
 | 比赛记录 | `_events/<场次>.md` |
 | 新闻 / 技术博文 | `_news/`、`_posts/`（文件名 `YYYY-MM-DD-xxx.md`） |
-| 项目 / 专利 | `_projects/`、`_patents/` |
+| 赛季成绩 / 历史成绩 / 积分榜 | `_data/seasons.yaml` |
+| 高光时刻视频 | `_data/highlights.yaml` |
+| 机器人介绍 | `projects/index.md` |
 | 首页文案 | `index.md` |
-| 成果页文案和图表 | `research/index.md` |
+| 大创项目 / 专利 | `_projects/`、`_patents/`（当前 `output: false`，不对外展示） |
 | 导航顺序 | 对应页面 front matter 的 `nav.order` |
 | 配色 | `_styles/-theme.css` |
 | 组件结构 | `_includes/`、`_layouts/` |
@@ -68,6 +70,39 @@ bundle exec jekyll serve --baseurl ""
 ```
 
 可选参数：`icon`、`style`（`small`/`tiny`）、`data`、`component`。
+### 成果页的数据来源
+
+成果页各板块都不写死在页面里，**没有数据时整块自动隐藏**：
+
+| 板块 | 数据来源 | 显示条件 |
+| --- | --- | --- |
+| 历史成绩 | `_data/seasons.yaml` 的 `rank` / `award` | 至少一个赛季填了其一 |
+| 积分榜排名 | `_data/seasons.yaml` 的 `rank_value`（全国赛名次数字） | 至少一个赛季填了 |
+| 高光时刻 | `_data/highlights.yaml` | 数组非空 |
+| 荣誉奖项 | `_awards/` 集合 | 按 `type` 分区，空分区不显示 |
+
+`_data/seasons.yaml` 同时驱动首页的「一代代 SPR」时间轴，**改一处两边同步**。
+新增赛季时在最前面加一条即可：
+
+```yaml
+- season: "25"      # 赛季号，与 _members 的 seasons 对应
+  year: 2025
+  title: 2025 赛季
+  rank: 全国赛十六强   # 显示在徽章与历史成绩
+  award: 国家级二等奖
+  rank_value: 16      # 只用于积分榜趋势图，填全国赛名次数字
+  cover: images/2025-team.jpg
+  summary: 一句话赛季记忆
+  url: team/          # 可点进赛季成员页，留空则不可点
+```
+
+高光时刻只需 BV 号：
+
+```yaml
+- title: RoboMaster 2025 十六进八
+  desc: 三分钟推爆基地
+  bvid: BV1xx411c7XX
+```
 
 ## 每年换届怎么做
 

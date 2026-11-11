@@ -1,111 +1,48 @@
 ---
-title: 成果 
+title: 成果
 nav:
   order: 1
-  tooltip: 多方面综合发展
+  tooltip: 比赛成绩与荣誉
 ---
+
+{%- comment -%}
+本页各板块均按 _data 自动渲染，无数据时整块隐藏：
+  历史成绩    _data/seasons.yaml 的 rank / award
+  积分榜排名  _data/seasons.yaml 的 rank_value
+  高光时刻    _data/highlights.yaml
+  荣誉奖项    _awards 集合
+{%- endcomment -%}
+{% assign history = site.data.seasons | where_exp: "s", "s.rank != nil or s.award != nil" %}
+{% assign rank_chart = site.data.seasons | where_exp: "s", "s.rank_value != nil" %}
 
 # {% include icon.html icon="fa-solid fa-microscope" %}我们的成果
 
+{% if history.size > 0 %}
 ## 历史成绩
-SPR 战队是一个以参加 RoboMaster 机器人比赛为主，其余竞赛为辅，以培养队员全面综合水平为目标的综合型团队。
 
-* 15年分区赛亚军、季军和第五名，在全国赛均进入全国三十二强；
-* 16年分区赛第五名，全国赛十六强；
-* 17年分区赛亚军，全国赛十六强；
-* 18年分区赛季军，全国赛三十二强；
-* 19年分区赛八强，全国赛三十二强；
-* 20年国家级二等奖；
-* 21年分区赛十六强；
-* 22年分区赛八强，全国赛线上评选，国家级一等奖；
-* 23年分区赛十六强，全国赛四十六强，国家级二等奖；
-* 24年分区赛殿军，全国赛二十八强，国家级二等奖。
+{% include history.html %}
 
 {% include section.html %}
-<!-- echarts -->
+{% endif %}
+
+{% if rank_chart.size > 0 %}
 ## 积分榜排名
-<div id="echarts" style="width: 100%; height: 300px;"></div>
 
-<script>
-
-console.log("in");
-var chartDom = document.getElementById('echarts');
-var myChart = echarts.init(chartDom);
-var option;
-option = {
-     tooltip: {
-        trigger: 'axis',  // 设置触发类型为坐标轴触发
-        axisPointer: {
-            type: 'cross'  // 设置指示器类型为十字准星
-            
-        },
-        formatter: function (params) {
-            var info = ["国家级二等奖", "分区赛十六强","分区赛八强，全国赛线上评选，国家级一等奖","分区赛十六强，全国赛四十六强，国家级二等奖","分区赛殿军，全国赛二十八强，国家级二等奖"];
-            var dataIndex = params[0].dataIndex; // 获取数据点的索引
-            return params[0].axisValue + info[dataIndex]+'<br> 排名：' + params[0].value; // 自定义提示框内容，这里显示额外信息
-        }
-    },
-  xAxis: {
-    type: 'category',
-    data: ['2020 年', '2021 年', '2022 年', '2023 年', '2024 年']
-  },
-  yAxis: {
-    type: 'value',
-    inverse: true,
-    min: 0, 
-    max: 265,
-            axisLabel: {
-            formatter: function (value) {
-                if (value === 0) {
-                    return "冠军"; // 将坐标轴等于 0的标签替换为图片
-                } else {
-                    return value; // 其他情况保持原始数值
-                }
-            },
-        }
-  },
-  series: [
-    {
-      data: [23,33,26,38,25],
-      type: 'line'
-    }
-  ]
-};
-option && myChart.setOption(option);
-</script>
+{% include rank-chart.html %}
 
 {% include section.html %}
+{% endif %}
 
-
+{% if site.data.highlights.size > 0 %}
 ## 高光时刻
-<div class="card">
-<div class="card-text">
-<div class="card-title">RoboMaster 2024</div>
 
-小组生死赛，两发飞镖，大符加成，推爆基地。
-</div>
-<div class="card-image">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=1954808056&bvid=BV1dy411h7D7&cid=1556478508&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" mute="true"></iframe>
-</div>
-</div>
-
-<div class="card">
-<div class="card-text">
-<div class="card-title">RoboMaster 2024</div>
-
-十六进八，国赛名额关键争夺战，顽强拼搏，三分钟推爆基地。
-</div>
-<div class="card-image">
-<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=1405028929&bvid=BV1sr421L7yP&cid=1557709783&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" mute="true"></iframe>
-</div>
-</div>
-
+{% include highlights.html %}
 
 {% include section.html %}
-
-
+{% endif %}
 
 ## 荣誉奖项
+
 {% include search-box.html %}
 {% include search-info.html %}
 {% assign national_awards_count = 0 %}
@@ -142,8 +79,6 @@ option && myChart.setOption(option);
 </tr>
 </table>
 
-
-
 {% if national_awards_count > 0 %}
 ### 国家级
 {% include list.html data="awards" component="awards" style="rich" filters="type: 国家级" %}
@@ -163,7 +98,3 @@ option && myChart.setOption(option);
 ### 其他类型
 {% include list.html data="awards" component="awards" style="simple" filters="type: 其他" %}
 {% endif %}
-
-
-
-{% include section.html %}
