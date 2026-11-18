@@ -8,6 +8,11 @@ header-video: images/bgvideo.mp4
 footer:  images/spr_footer.jpg
 proofer: false
 slogan: 京中铁狮，所向披靡
+# 导航栏右侧的站外链接（按顺序追加在内置页面之后）
+nav_external:
+  - text: 战队空间
+    url: https://bbs.robomaster.com/reg/team-space?teamId=92
+    tooltip: RoboMaster 官方战队空间
 
 # 每年换届只需要改这里：
 #   current     成员页展示的赛季号，对应 _members 里的 seasons / echelon

@@ -65,5 +65,15 @@
         </a>
       {% endif %}
     {% endfor %}
+    {% for link in site.nav_external %}
+      <a
+        href="{{ link.url }}"
+        target="_blank"
+        rel="noopener"
+        {% if link.tooltip %}data-tooltip="{{ link.tooltip }}"{% endif %}
+      >
+        {{ link.text }}
+      </a>
+    {% endfor %}
   </nav>
 </header>
