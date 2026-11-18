@@ -149,7 +149,9 @@ def check_members() -> set[str]:
             names[name] = owner
 
         if "seasons" not in data:
-            errors.append(f"{owner}: 缺少 seasons（用于按赛季筛选成员）")
+                    # 指导老师与杰出人物不参与赛季分组，不强制要求 seasons
+                    if str(data.get("role") or "").strip() != "指导老师" and str(data.get("type") or "").strip() != "杰出人物":
+                        errors.append(f"{owner}: 缺少 seasons（用于按赛季筛选成员）")
         else:
             values = as_list(data.get("seasons"))
             if not values:

@@ -7,7 +7,7 @@ nav:
 
 {%- comment -%}
 每年换届只改 _config.yaml 里的 season.current，本页不需要改动。
-赛季标题与年份取自 _data/seasons.yaml，与首页时间轴保持一致。
+赛季标题年份取自 _data/seasons.yaml，分组与顺序取自 _data/groups.yaml。
 {%- endcomment -%}
 {% assign season = site.season.current %}
 {% assign current_season = site.data.seasons | where: "season", season | first %}
@@ -28,17 +28,12 @@ nav:
 
 {% include section.html %}
 
-{% include group.html title="机械组" filters="role: 机械组" exact_filters=f_season style="small" %}
-
-{% include group.html title="电路组" filters="role: 电路组" exact_filters=f_season style="small" %}
-
-{% include group.html title="嵌软组" filters="role: 嵌软组" exact_filters=f_season style="small" %}
-
-{% include group.html title="算法组" filters="role: 算法组" exact_filters=f_season style="small" %}
-
-{% include group.html title="运营组" filters="role: 运营组" exact_filters=f_season style="small" %}
-
 {% include group.html title="团队负责人" exact_filters=f_leader %}
+
+{% for group in site.data.groups %}
+{% capture f_group %}role: {{ group }}{% endcapture %}
+{% include group.html title=group filters=f_group exact_filters=f_season style="small" %}
+{% endfor %}
 
 {% include group.html title="梯队" exact_filters=f_echelon style="tiny" %}
 

@@ -65,7 +65,7 @@
 
 ## {{ season_year }} 赛季的我们
 
-{% include member-wall.html limit=30 %}
+{% include member-wall.html %}
 
 {%
   include button.html

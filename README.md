@@ -47,6 +47,7 @@ bundle exec jekyll serve --baseurl ""
 | 站点标题、描述、slogan、页头背景/视频、社交链接 | `_config.yaml` |
 | 当前赛季 | `_config.yaml` 的 `season` |
 | 成员 | `_members/<姓名>.md` |
+| 成员分组（顺序/名称） | `_data/groups.yaml` |
 | 获奖 | `_awards/<奖项>.md` |
 | 比赛记录 | `_events/<场次>.md` |
 | 新闻 / 技术博文 | `_news/`、`_posts/`（文件名 `YYYY-MM-DD-xxx.md`） |

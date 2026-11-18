@@ -5,6 +5,11 @@
 %}
 
 
+{% assign portrait_photo = member.image | file_exists %}
+{% if member.image == "images/fallback.svg" %}{% assign portrait_photo = nil %}{% endif %}
+{% assign portrait_remote = false %}
+{% if member.image contains "://" %}{% assign portrait_remote = true %}{% endif %}
+
 <div class="portrait-wrapper">
   <a 
     {% if page.slug != member.slug %}
@@ -14,13 +19,17 @@
     data-style="{{ include.style }}"
     aria-label="{{ member.name | default: "member link" }}"
   >
-    <img
-      src="{{ member.image | relative_url }}"
-      class="portrait-image"
-      alt="member portrait"
-      loading="lazy"
-      {% include fallback.html %}
-    >
+    {% if portrait_photo or portrait_remote %}
+      <img
+        src="{{ member.image | relative_url }}"
+        class="portrait-image"
+        alt="member portrait"
+        loading="lazy"
+        {% include fallback.html %}
+      >
+    {% else %}
+      <span class="portrait-initial" aria-hidden="true">{{ member.name | slice: 0, 1 }}</span>
+    {% endif %}
 
     {% if member.name or member.role or member.description %}
       <span class="portrait-text">

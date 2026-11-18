@@ -8,5 +8,6 @@ members:
   - 胡思昊
 description: 在RoboMaster论坛及官网等渠道将核心技术或运营管理方法开源，推进RoboMaster大赛的发展及弘扬工程师文化与精神。获奖金RMB3,000。
 detail: true
+published: false
 ---
 <a href="https://github.com/HUSTLYRM/HUST_HeroAim_2024" target="_blank" class="center">开源链接</a> 
