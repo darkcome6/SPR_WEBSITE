@@ -10,26 +10,47 @@
 
 当前使用 GitHub Pages 默认地址：<https://darkcome6.github.io/SPR_WEBSITE>
 
-仓库里**没有** `CNAME` 文件。原先的 `CNAME` 写了两行域名（GitHub Pages 不支持，会静默失效），
-且两个域名都无法访问，已移除。
-
 ### 换成自己的域名
 
-只需要买域名，**不需要服务器，也不需要 ICP 备案**（GitHub Pages 服务器在境外）。
+只需要买域名，**不需要服务器，也不需要 ICP 备案**（GitHub Pages 托管在境外，
+阿里云官方原文：*托管于中国内地服务器的网站需进行 ICP 备案，托管于非中国内地服务器的网站无需进行 ICP 备案*）。
+但域名**必须完成实名认证**，否则会被注册局 `serverHold`，解析不生效。
 
-1. DNS 解析：
-   - `CNAME  www   → darkcome6.github.io`
-   - `A      @     → 185.199.108.153 / .109.153 / .110.153 / .111.153`
-2. 新建 `CNAME` 文件，**只写一行**裸域名，例如：
+阿里云「云工开物」学生 300 元券**不能用来买域名**（官方规则把「域名 / domain」列入通用券不适用清单），
+域名只能现金支付。2026-11 万网价格：`.com` 首年 76 元、续费 90 元；`.cn` 首年 30 元、续费 42 元；
+`.top` 首年 14 元、续费 39 元；`.xyz`/`.site`/`.online`/`.tech` 首年 6–12 元但续费 120–254 元。
+长期用优先 `.com` 或 `.cn`。
+
+**操作顺序：先在 GitHub 填域名，再去阿里云配 DNS**（跳过这步可能被别人抢注子域）。
+
+1. 仓库 Settings → Pages → *Custom domain* 填 `www.<你的域名>` 并 Save。
+   建议用 `www` 作主域名：`www` 不受 GitHub 换 IP 影响，apex 会自动 301 过来。
+2. 阿里云 → 域名控制台 → 解析设置，全部用默认的免费版云解析即可：
    ```
-   spr-robomaster.com
+   A      @     185.199.108.153
+   A      @     185.199.109.153
+   A      @     185.199.110.153
+   A      @     185.199.111.153
+   AAAA   @     2606:50c0:8000::153
+   AAAA   @     2606:50c0:8001::153
+   AAAA   @     2606:50c0:8002::153
+   AAAA   @     2606:50c0:8003::153
+   CNAME  www   darkcome6.github.io
    ```
-3. 仓库 Settings → Pages 填自定义域名并勾选 *Enforce HTTPS*。
+   删掉服务商默认的 parking 记录，**不要**加 `*` 泛解析；多余的 A/CNAME 会挡住证书签发。
+3. 回到 Settings → Pages，等证书签发（几分钟到 1 小时）后勾选 *Enforce HTTPS*。
+   卡住就 Remove 域名再 Save 一次，重新触发 Let's Encrypt 签发。
+4. 仓库 Settings → Secrets and variables → Actions → **Variables** 新建
+   `CUSTOM_DOMAIN`，值为 `www.<你的域名>`。
+
+第 4 步不能省：本站是「构建后 push `gh-pages`」的发布方式，自定义域名存放在**产物里的 `CNAME` 文件**中，
+而每次部署都会重写 `gh-pages`。工作流会用 `CUSTOM_DOMAIN` 变量生成 `_site/CNAME`，
+不设这个变量的话，域名会在下一次部署后静默失效。
 
 注意：换自定义域名后站点从 `darkcome6.github.io/SPR_WEBSITE/` 变为域名根路径，
 旧链接会 404。因为全站统一用 `relative_url`，站内链接会自动跟着变对。
 
-`tools/validate_content.py` 会检查 `CNAME` 是否为单行裸域名。
+`tools/validate_content.py` 会检查 `CNAME`（如果存在）是否为单行裸域名。
 
 ## 本地预览
 

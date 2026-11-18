@@ -44,6 +44,14 @@ jobs:
         run: |
           JEKYLL_ENV=production bundle exec jekyll build --baseurl "${{ steps.pages.outputs.base_path || '' }}"
 
+      # 自定义域名：在仓库 Settings → Secrets and variables → Actions → Variables
+      # 添加 CUSTOM_DOMAIN（如 www.spr-xxx.com）即可。
+      # 本站按「构建后 push gh-pages」方式发布，CNAME 必须落在产物里，
+      # 否则每次部署都会被覆盖掉，域名会静默失效。
+      - name: Write CNAME for custom domain
+        if: vars.CUSTOM_DOMAIN != ''
+        run: printf '%s\n' "${{ vars.CUSTOM_DOMAIN }}" > _site/CNAME
+
       - name: Commit live site to Pages branch
         uses: JamesIves/github-pages-deploy-action@v4.5.0
         with:
