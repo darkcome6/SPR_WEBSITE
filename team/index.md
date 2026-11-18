@@ -42,13 +42,3 @@ nav:
 # {% include icon.html icon="fa-solid fa-chalkboard-user" %}指导老师
 
 {% include list_portrait.html data="members" component="portrait" filters="role: 指导老师" %}
-
-{% include section.html background="images/background.jpg" dark=true %}
-
-从 SPR 走出的优秀人才，他们在各自领域取得了优异的成绩，是 SPR 战队的骄傲和榜样。
-
-{% include section.html %}
-
-# 杰出人物
-
-{% include list_portrait.html data="members" component="portrait" filters="type: 杰出人物" %}
