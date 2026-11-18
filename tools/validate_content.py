@@ -18,7 +18,7 @@ from pathlib import Path
 import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
-MEMBER_REQUIRED = ("name", "role", "type", "image")
+MEMBER_REQUIRED = ("name", "type", "image")
 IMAGE_SUFFIXES = {".jpg", ".jpeg", ".png", ".webp", ".svg", ".gif"}
 MAX_IMAGE_BYTES = 1_500_000
 
@@ -142,6 +142,8 @@ def check_members() -> set[str]:
         for key in MEMBER_REQUIRED:
             if not data.get(key):
                 errors.append(f"{owner}: 缺少必填字段 {key}")
+                if not str(data.get("role") or "").strip():
+                    warnings.append(f"{owner}: 未填 role（不会出现在任何分组，仅按 type 归类）")
         name = str(data.get("name") or "").strip()
         if name:
             if name in names:
