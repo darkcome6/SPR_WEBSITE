@@ -1,0 +1,107 @@
+{%- comment -%}
+荣誉墙：按年份分组，按奖级配色（金/银/铜/优秀），带统计与年度分布图。
+数据来自 _awards 集合；每条奖项的 season/date 决定年份分组。
+{%- endcomment -%}
+{% assign all_awards = site.awards %}
+
+{% assign gold = 0 %}{% assign silver = 0 %}{% assign bronze = 0 %}{% assign other = 0 %}
+{% for a in all_awards %}
+  {% if a.prize contains "一等奖" or a.prize contains "特等奖" %}{% assign gold = gold | plus: 1 %}
+  {% elsif a.prize contains "二等奖" %}{% assign silver = silver | plus: 1 %}
+  {% elsif a.prize contains "三等奖" %}{% assign bronze = bronze | plus: 1 %}
+  {% else %}{% assign other = other | plus: 1 %}{% endif %}
+{% endfor %}
+
+<div class="award-summary">
+  <div class="award-summary-item" data-prize="gold">
+    <span class="award-summary-value">{{ gold }}</span>
+    <span class="award-summary-label">一等奖</span>
+  </div>
+  <div class="award-summary-item" data-prize="silver">
+    <span class="award-summary-value">{{ silver }}</span>
+    <span class="award-summary-label">二等奖</span>
+  </div>
+  <div class="award-summary-item" data-prize="bronze">
+    <span class="award-summary-value">{{ bronze }}</span>
+    <span class="award-summary-label">三等奖</span>
+  </div>
+  <div class="award-summary-item" data-prize="other">
+    <span class="award-summary-value">{{ other }}</span>
+    <span class="award-summary-label">优秀奖及其他</span>
+  </div>
+</div>
+
+{% assign years = all_awards | group_by_exp: "a", "a.date | date: '%Y'" | sort: "name" | reverse %}
+<div id="award-chart" class="award-chart"></div>
+<script>
+(function () {
+  var data = [{% for y in years %}{ year: "{{ y.name }}", count: {{ y.items.size }} }{% unless forloop.last %},{% endunless %}{% endfor %}];
+  data.reverse();
+
+  function draw() {
+    var el = document.getElementById("award-chart");
+    if (!el || typeof echarts === "undefined") return;
+    var width = el.clientWidth;
+    if (!width || width < 200) {
+      setTimeout(draw, 120);
+      return;
+    }
+
+    var chart = echarts.getInstanceByDom(el) || echarts.init(el);
+    chart.resize({ width: width, height: el.clientHeight });
+    chart.setOption({
+      grid: { left: 8, right: 8, top: 26, bottom: 8, containLabel: true },
+      tooltip: { trigger: "axis", axisPointer: { type: "shadow" } },
+      xAxis: { type: "category", data: data.map(function (d) { return d.year; }), axisTick: { show: false } },
+      yAxis: { type: "value", minInterval: 1, splitLine: { lineStyle: { opacity: 0.2 } } },
+      series: [{
+        type: "bar",
+        barWidth: "46%",
+        itemStyle: {
+          borderRadius: [4, 4, 0, 0],
+          color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+            { offset: 0, color: "#0795d9" },
+            { offset: 1, color: "#7dd3fc" }
+          ])
+        },
+        label: { show: true, position: "top" },
+        data: data.map(function (d) { return d.count; })
+      }]
+    });
+
+    window.addEventListener("resize", function () {
+      chart.resize({ width: el.clientWidth, height: el.clientHeight });
+    });
+  }
+
+  if (document.readyState === "complete") {
+    setTimeout(draw, 60);
+  } else {
+    window.addEventListener("load", function () { setTimeout(draw, 60); });
+  }
+})();
+</script>
+
+{% for year in years %}
+{% assign sorted_items = year.items | sort: "level" %}
+<section class="award-year">
+  <h3 class="award-year-title">
+    <span class="award-year-num">{{ year.name }}</span>
+    <span class="award-year-count">{{ year.items.size }} 项</span>
+  </h3>
+  <div class="award-grid">
+    {% for award in sorted_items %}
+      {% assign level = "other" %}
+      {% if award.prize contains "一等奖" or award.prize contains "特等奖" %}{% assign level = "gold" %}
+      {% elsif award.prize contains "二等奖" %}{% assign level = "silver" %}
+      {% elsif award.prize contains "三等奖" %}{% assign level = "bronze" %}
+      {% endif %}
+      {% assign short = award.name | remove_first: year.name | strip %}
+      <a class="award-chip" data-prize="{{ level }}" href="{{ award.url | relative_url }}">
+        <span class="award-chip-prize">{{ award.prize }}</span>
+        <span class="award-chip-name">{{ short }}</span>
+      </a>
+    {% endfor %}
+  </div>
+</section>
+{% endfor %}

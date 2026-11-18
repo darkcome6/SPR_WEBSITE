@@ -1,0 +1,168 @@
+---
+---
+
+// ---------- 荣誉墙 ----------
+
+$gold: #d99b0b;
+$silver: #8d97a3;
+$bronze: #b06a3b;
+$other: #6b7280;
+
+.award-summary {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin: 24px auto 8px;
+}
+
+.award-summary-item {
+  min-width: 110px;
+  padding: 14px 22px;
+  border-radius: var(--rounded);
+  background: var(--background);
+  border: 1px solid var(--light-gray);
+  border-top: 3px solid var(--accent);
+  text-align: center;
+
+  &[data-prize="gold"] {
+    --accent: #{$gold};
+  }
+
+  &[data-prize="silver"] {
+    --accent: #{$silver};
+  }
+
+  &[data-prize="bronze"] {
+    --accent: #{$bronze};
+  }
+
+  &[data-prize="other"] {
+    --accent: #{$other};
+  }
+}
+
+.award-summary-value {
+  display: block;
+  font-family: var(--title);
+  font-size: 30px;
+  font-weight: var(--bold);
+  line-height: 1.1;
+  color: var(--accent);
+}
+
+.award-summary-label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+.award-chart {
+  width: 100%;
+  max-width: 860px;
+  height: 240px;
+  margin: 8px auto 20px;
+}
+
+.award-year {
+  margin: 28px 0;
+}
+
+.award-year-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.award-year-num {
+  font-family: var(--title);
+  font-size: 22px;
+  font-weight: var(--bold);
+  color: var(--primary);
+}
+
+.award-year-count {
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+.award-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 8px;
+}
+
+.award-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: var(--rounded);
+  background: var(--background);
+  border: 1px solid var(--light-gray);
+  border-left: 4px solid var(--accent);
+  color: var(--text);
+  text-decoration: none;
+  transition: transform var(--transition), box-shadow var(--transition),
+    border-color var(--transition);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+    border-color: var(--accent);
+  }
+
+  &[data-prize="gold"] {
+    --accent: #{$gold};
+  }
+
+  &[data-prize="silver"] {
+    --accent: #{$silver};
+  }
+
+  &[data-prize="bronze"] {
+    --accent: #{$bronze};
+  }
+
+  &[data-prize="other"] {
+    --accent: #{$other};
+  }
+}
+
+.award-chip-prize {
+  flex: 0 0 auto;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 12px;
+  font-weight: var(--semi-bold);
+  white-space: nowrap;
+}
+
+.award-chip-name {
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+@media (max-width: 700px) {
+  .award-summary-item {
+    min-width: 84px;
+    padding: 10px 14px;
+  }
+
+  .award-summary-value {
+    font-size: 24px;
+  }
+
+  .award-chart {
+    height: 180px;
+  }
+
+  .award-grid {
+    grid-template-columns: 1fr;
+  }
+}

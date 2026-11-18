@@ -5,7 +5,8 @@
 */
 {
   // elements to filter
-  const elementSelector = ".card, .citation, .post-excerpt, .citation-simple, .portrait-wrapper";
+  const elementSelector =
+    ".card, .citation, .post-excerpt, .citation-simple, .portrait-wrapper, .award-chip";
   // search box element
   const searchBoxSelector = ".search-box";
   // results info box element
