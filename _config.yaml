@@ -7,6 +7,7 @@ header: images/spr_background.jpg
 # 首页封面轮播图：按顺序循环淡入淡出，建议 3–5 张、统一横向构图（16:9 或 3:2）
 header-slides:
   - images/spr_background.jpg
+  - images/hero/hero-group.jpg
   - images/hero/hero-field.jpg
   - images/hero/hero-stand.jpg
 footer:  images/spr_footer.jpg
