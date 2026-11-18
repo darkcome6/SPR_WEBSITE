@@ -23,29 +23,29 @@
 
 **操作顺序：先在 GitHub 填域名，再去阿里云配 DNS**（跳过这步可能被别人抢注子域）。
 
-1. 仓库 Settings → Pages → *Custom domain* 填 `www.<你的域名>` 并 Save。
+1. 买域名并完成实名认证。
+2. 仓库 Settings → Pages → *Custom domain* 填 `www.<你的域名>` 并 Save。
    建议用 `www` 作主域名：`www` 不受 GitHub 换 IP 影响，apex 会自动 301 过来。
-2. 阿里云 → 域名控制台 → 解析设置，全部用默认的免费版云解析即可：
-   ```
-   A      @     185.199.108.153
-   A      @     185.199.109.153
-   A      @     185.199.110.153
-   A      @     185.199.111.153
-   AAAA   @     2606:50c0:8000::153
-   AAAA   @     2606:50c0:8001::153
-   AAAA   @     2606:50c0:8002::153
-   AAAA   @     2606:50c0:8003::153
-   CNAME  www   darkcome6.github.io
-   ```
-   删掉服务商默认的 parking 记录，**不要**加 `*` 泛解析；多余的 A/CNAME 会挡住证书签发。
-3. 回到 Settings → Pages，等证书签发（几分钟到 1 小时）后勾选 *Enforce HTTPS*。
-   卡住就 Remove 域名再 Save 一次，重新触发 Let's Encrypt 签发。
-4. 仓库 Settings → Secrets and variables → Actions → **Variables** 新建
-   `CUSTOM_DOMAIN`，值为 `www.<你的域名>`。
+3. 阿里云 → 域名控制台 → 解析设置（默认免费版云解析够用）。让脚本把记录列出来照着填：
 
-第 4 步不能省：本站是「构建后 push `gh-pages`」的发布方式，自定义域名存放在**产物里的 `CNAME` 文件**中，
-而每次部署都会重写 `gh-pages`。工作流会用 `CUSTOM_DOMAIN` 变量生成 `_site/CNAME`，
-不设这个变量的话，域名会在下一次部署后静默失效。
+   ```bash
+   python tools/set_domain.py www.<你的域名>
+   ```
+
+   它会写出 `CNAME` 并打印要加的 9 条记录（`A`/`AAAA` 各 4 条到 `@`，`CNAME` 一条 `www` → `darkcome6.github.io`）。
+   其余 parking 记录删掉，**不要**加 `*` 泛解析；多余的 A/CNAME 会挡住证书签发。
+4. 回到 Settings → Pages，等证书签发（几分钟到 1 小时）后勾选 *Enforce HTTPS*。
+   卡住就 Remove 域名再 Save 一次，重新触发 Let's Encrypt 签发。
+5. 提交推送 `CNAME`，确认 `https://www.<你的域名>` 能打开。
+
+撤销域名：`python tools/set_domain.py --clear`，同时清掉 Settings 里的自定义域名。
+
+**为什么要落到仓库里**：本站是「构建后 push `gh-pages`」的发布方式，自定义域名存放在**产物根目录的 `CNAME`** 里，
+而每次部署都会重写 `gh-pages`。源码根目录的 `CNAME` 会被 Jekyll 原样拷进 `_site`，所以不会丢；
+只在 Settings 里填、仓库里没有 `CNAME` 的话，域名会在下一次部署后静默失效。
+
+（也可以用仓库变量：Settings → Secrets and variables → Actions → Variables 建 `CUSTOM_DOMAIN`，
+工作流会用它生成 `_site/CNAME`。两种方式等效，`CNAME` 文件更直观。）
 
 注意：换自定义域名后站点从 `darkcome6.github.io/SPR_WEBSITE/` 变为域名根路径，
 旧链接会 404。因为全站统一用 `relative_url`，站内链接会自动跟着变对。
