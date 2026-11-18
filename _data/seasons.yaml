@@ -1,14 +1,15 @@
-# 赛季主线数据：首页时间轴、成果页历史成绩/积分榜、成员页共用这一份。
+# 赛季数据：首页时间轴、成果页「历史成绩」、成员页共用这一份。
 # 从新到旧排列，每年新增赛季时在最前面加一条。
-#   season      赛季号（与 _members 的 seasons 对应）
-#   year        年份
-#   title       赛季标题
-#   rank        赛事名次文字，显示在徽章与历史成绩里；留空则不显示
-#   award       奖项等级文字；留空则不显示
-#   rank_value  全国赛名次数字（越小越好），只有填了才会出现在积分榜趋势图里
-#   cover       封面图，建议放队伍合影；留空则不显示图
-#   summary     一句话赛季记忆
-#   url         点击跳转的页面，留空则卡片不可点击
+#   season          赛季号（与 _members 的 seasons 对应）
+#   year            年份
+#   title           赛季标题
+#   rank            区域赛成绩，显示在徽章与历史成绩里；留空则不显示
+#   award           全国赛成绩；留空则不显示
+#   rank_value      全国赛名次数字（越小越好），填了才出现在积分榜趋势图
+#   cover           封面图；留空则不显示
+#   summary         一句话赛季记忆
+#   url             点击跳转的页面，留空则卡片不可点击
+#   timeline        false 表示只进历史成绩、不进首页时间轴（用于较早赛季）
 
 - season: "27"
   year: 2027
@@ -23,29 +24,62 @@
 - season: "26"
   year: 2026
   title: 2026 赛季
-  rank: 东部赛区三十二强
-  award: RMUC 二等奖、RMUL 3V3 二等奖
+  rank: 区域赛二等奖
+  award: 全国赛三等奖
   rank_value:
   cover: images/spr_cheer.jpg
-  summary: 超级对抗赛东部赛区三十二强，高校联盟赛华北站十六强。
+  summary: 东部赛区三十二强、华北站十六强，全国赛三等奖。
   url:
 
 - season: "25"
   year: 2025
   title: 2025 赛季
-  rank:
-  award:
+  rank: 区域赛一等奖
+  award: 全国赛二等奖
   rank_value:
   cover: images/background.jpg
-  summary:
+  summary: 联盟赛 3V3 甲级组二等奖，机器人竞技奖覆盖七个兵种。
   url:
 
 - season: "24"
   year: 2024
   title: 2024 赛季
-  rank:
-  award:
+  rank: 区域赛二等奖
+  award: 全国赛三等奖
   rank_value:
   cover: images/cooporate.jpeg
+  summary: 联盟赛 3V3 甲级组一等奖、步兵对抗赛二等奖。
+  url:
+
+- season: "23"
+  year: 2023
+  title: 2023 赛季
+  rank: 区域赛一等奖
+  award: 全国赛三等奖
+  rank_value:
+  cover:
   summary:
   url:
+  timeline: false
+
+- season: "22"
+  year: 2022
+  title: 2022 赛季
+  rank: 区域赛一等奖
+  award: 全国赛二等奖
+  rank_value:
+  cover:
+  summary:
+  url:
+  timeline: false
+
+- season: "21"
+  year: 2021
+  title: 2021 赛季
+  rank: 区域赛一等奖
+  award: 全国赛二等奖
+  rank_value:
+  cover:
+  summary:
+  url:
+  timeline: false

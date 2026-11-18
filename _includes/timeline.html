@@ -3,7 +3,8 @@
 数据来自 _data/seasons.yaml；成员数按 _members 的 seasons 自动统计。
 {%- endcomment -%}
 <div class="timeline">
-  {% for s in site.data.seasons %}
+  {% assign timeline_seasons = site.data.seasons | where_exp: "s", "s.timeline != false" %}
+  {% for s in timeline_seasons %}
     {% capture f_season %}seasons: {{ s.season }}{% endcapture %}
     {% assign s_members = site.members | data_filter_exact: f_season %}
     {% assign s_url = s.url | default: "" %}

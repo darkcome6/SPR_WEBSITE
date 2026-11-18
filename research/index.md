@@ -84,7 +84,7 @@ nav:
 
 {% if national_awards_count > 0 %}
 ### 国家级
-{% include list.html data="awards" component="awards" style="rich" filters="type: 国家级" %}
+{% include list.html data="awards" component="awards" style="simple" filters="type: 国家级" %}
 {% endif %}
 
 {% if international_awards_count > 0 %}
