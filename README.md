@@ -229,3 +229,11 @@ PR 会自动运行（`.github/workflows/validate-content.yaml`）。收尾阶段
 ## 文档
 
 模板完整文档：<https://greene-lab.gitbook.io/lab-website-template-docs>
+
+## 素材与许可
+
+- `images/logo.svg` 的狮头剪影取自 [Game Icons](https://game-icons.net/) 的 `lion`
+  （作者 Lorc，[CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)），
+  按本站徽标需要做了缩放与排布；`images/logo_black.png`（站点图标）与
+  `images/share.jpg`（分享卡片）由同一剪影生成。
+- 其余照片由战队成员拍摄并提供。
