@@ -28,7 +28,7 @@
           class="hero-slide{% if forloop.first %} is-active{% endif %}"
           src="{{ slide | relative_url }}"
           alt=""
-          {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+          {% if forloop.first %}fetchpriority="high"{% else %}decoding="async"{% endif %}
           {% include fallback.html %}
         >
       {% endfor %}
