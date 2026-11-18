@@ -93,4 +93,32 @@
   color: var(--text-light);
 }
 
+.portrait-initial {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  aspect-ratio: 1/1;
+  border-radius: 999px;
+  background: var(--background-alt);
+  border: 1px solid var(--light-gray);
+  color: var(--primary);
+  font-family: var(--title);
+  font-size: 2.4rem;
+  font-weight: var(--bold);
+  line-height: 1;
+  box-shadow: var(--shadow);
+  user-select: none;
+}
+
+.portrait[data-style=small] .portrait-initial {
+  font-size: 1.8rem;
+}
+
+.portrait[data-style=tiny] .portrait-initial {
+  width: 50px;
+  flex: 0 0 50px;
+  font-size: 1.2rem;
+}
+
 /*# sourceMappingURL=portrait.css.map */
