@@ -5,9 +5,11 @@
 {% assign current_season = site.data.seasons | where: "season", season | first %}
 {% assign season_year = current_season.year | default: season %}
 
-# 中国石油大学 SPR 战队
+# 中国石油大学（北京）SPR 战队
 
-中国石油大学 RoboMaster 团队（SPR 战队）是中国石油大学机械与储运工程学院最耀眼的团队之一，是一个以参加 RoboMaster 机器人比赛为主、以培养队员全面综合水平为目标的综合型团队。
+SPR 战队隶属于中国石油大学（北京），是学校面向 RoboMaster 机甲大师赛组建的学生科技创新团队，成立于 2004 年。战队下设机械、电控、算法、视觉、运营等多个部门，形成了完整的机器人研发与项目管理体系。
+
+战队立足工程实践，独立完成多类竞赛机器人的机械结构设计、嵌入式控制与视觉算法开发，致力于培养兼具动手能力与工程素养的复合型科技人才。
 
 <div class="stats">
   <div class="stats-item">

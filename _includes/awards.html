@@ -95,7 +95,7 @@
              <!-- 解析award.time的Y-m -->
               <!-- 输出为%Y年-%m月 -->
               {% if award.date %}
-              {{ award.date | date: "%Y年%m月" }}
+              {{ award.date | date: "%Y 年" }}
               {% endif %}
               {% if award.detail %} 
             <a href="{{ award.url | relative_url }}" title="{{ award.name }}" >
@@ -187,7 +187,7 @@
   </div>
   {% if award.time %}
     <div class="citation-date center simple">
-      {{ award.date | date: "%Y年-%m月" }}
+      {{ award.date | date: "%Y 年" }}
     </div>
   {% endif %}
   <div class="citation-details center simple">

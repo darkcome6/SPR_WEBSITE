@@ -17,17 +17,17 @@
   award:
   rank_value:
   cover: images/cheer.jpg
-  summary:
+  summary: 参赛项目为超级对抗赛、3V3 对抗赛与步兵对抗赛，赛季进行中。
   url: team/
 
 - season: "26"
   year: 2026
   title: 2026 赛季
-  rank:
-  award:
+  rank: 东部赛区三十二强
+  award: RMUC 二等奖、RMUL 3V3 二等奖
   rank_value:
   cover: images/spr_cheer.jpg
-  summary:
+  summary: 超级对抗赛东部赛区三十二强，高校联盟赛华北站十六强。
   url:
 
 - season: "25"

@@ -1,13 +1,13 @@
 # site properties and page defaults
-title: 中国石油大学 SPR 战队
+title: 中国石油大学（北京）SPR 战队
 subtitle: RoboMaster 机器人战队
-description: 中国石油大学（北京）SPR 战队，以参加 RoboMaster 机器人比赛为主、以培养队员全面综合能力为目标的机器人团队。
+description: SPR 战队隶属于中国石油大学（北京），是学校面向 RoboMaster 机甲大师赛组建的学生科技创新团队，成立于 2004 年。
 lang: zh-CN
 header: images/spr_background.jpg
 header-video: images/bgvideo.mp4
 footer:  images/spr_footer.jpg
 proofer: false
-slogan: 九楼灯火长明,赛场我们必赢
+slogan: 京中铁狮，所向披靡
 
 # 每年换届只需要改这里：
 #   current     成员页展示的赛季号，对应 _members 里的 seasons / echelon

@@ -73,7 +73,7 @@ layout: default
              <!-- 解析page.time的Y-m -->
               <!-- 输出为%Y年-%m月 -->
               {% if page.date %}
-              {{ page.date | date: "%Y年%m月" }}
+              {{ page.date | date: "%Y 年" }}
               {% endif %}
               {% if page.detail %} 
             <a href="{{ page.url | relative_url }}" title="{{ page.name }}" >
