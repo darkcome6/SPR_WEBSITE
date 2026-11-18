@@ -44,7 +44,8 @@ bundle exec jekyll serve --baseurl ""
 
 | 想改的内容 | 改这里 |
 | --- | --- |
-| 站点标题、描述、slogan、页头背景/视频、社交链接 | `_config.yaml` |
+| 站点标题、描述、slogan、页头背景、社交链接 | `_config.yaml` |
+| 首页封面轮播图 | `_config.yaml` 的 `header-slides`（按顺序循环淡入淡出） |
 | 当前赛季 | `_config.yaml` 的 `season` |
 | 成员 | `_members/<姓名>.md` |
 | 成员分组（顺序/名称） | `_data/groups.yaml` |

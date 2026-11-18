@@ -1,6 +1,6 @@
 {% assign image = page.header | default: site.header | relative_url %}
 {% assign dark = page.header-dark | is_nil: site.header-dark | is_nil: true %}
-{% assign video =  page.header-video | default: site.header-video %}
+{% assign hero_slides = page.header-slides | default: site.header-slides %}
 
 {% assign svg = "images/logo.svg" | file_exists %}
 {% assign png = "images/logo.png" | file_exists %}
@@ -21,7 +21,19 @@
 >
 {% if page.url=="/" %}
   <div class="overlay"></div>
-<video class="background-video" preload="auto" playsinline="true" x5-playsinline="true" webkit-playsinline="true" name="media" autoplay="autoplay" loop="loop" muted="muted" data-wf-ignore="true" data-object-fit="cover" poster="{{ image }}" src="{{ video | relative_url }}" ></video>
+  {% if hero_slides %}
+    <div class="hero-slides" aria-hidden="true">
+      {% for slide in hero_slides %}
+        <img
+          class="hero-slide{% if forloop.first %} is-active{% endif %}"
+          src="{{ slide | relative_url }}"
+          alt=""
+          {% if forloop.first %}fetchpriority="high"{% else %}loading="lazy"{% endif %}
+          {% include fallback.html %}
+        >
+      {% endfor %}
+    </div>
+  {% endif %}
 {% endif %}
   <a href="{{ "/" | relative_url }}" class="home">
     {% if logo %}

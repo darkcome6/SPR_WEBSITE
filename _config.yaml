@@ -4,7 +4,11 @@ subtitle: RoboMaster 机器人战队
 description: SPR 战队隶属于中国石油大学（北京），是学校面向 RoboMaster 机甲大师赛组建的学生科技创新团队，成立于 2004 年。
 lang: zh-CN
 header: images/spr_background.jpg
-header-video: images/bgvideo.mp4
+# 首页封面轮播图：按顺序循环淡入淡出，建议 3–5 张、统一横向构图（16:9 或 3:2）
+header-slides:
+  - images/spr_background.jpg
+  - images/hero/hero-field.jpg
+  - images/hero/hero-stand.jpg
 footer:  images/spr_footer.jpg
 proofer: false
 slogan: 京中铁狮，所向披靡
