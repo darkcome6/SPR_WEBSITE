@@ -202,6 +202,10 @@
   
 
   
+    <link href="/SPR_WEBSITE/_styles/hero.css" rel="stylesheet">
+  
+
+  
     <link href="/SPR_WEBSITE/_styles/highlight.css" rel="stylesheet">
   
 
@@ -343,6 +347,8 @@
 
   
 
+  
+
 
 <!-- include all css in styles folder -->
 
@@ -361,6 +367,8 @@
   <script src="/SPR_WEBSITE/_scripts/dark-mode.js"></script>
 
   <script src="/SPR_WEBSITE/_scripts/fetch-tags.js"></script>
+
+  <script src="/SPR_WEBSITE/_scripts/hero-slides.js"></script>
 
   <script src="/SPR_WEBSITE/_scripts/search.js"></script>
 
@@ -387,7 +395,17 @@
 <header class="background" data-dark="true" data-big>
 
   <div class="overlay"></div>
-<video class="background-video" preload="auto" playsinline="true" x5-playsinline="true" webkit-playsinline="true" name="media" autoplay="autoplay" loop="loop" muted="muted" data-wf-ignore="true" data-object-fit="cover" poster="/SPR_WEBSITE/images/spr_background.jpg" src="/SPR_WEBSITE/images/bgvideo.mp4"></video>
+  
+    <div class="hero-slides" aria-hidden="true">
+      
+        <img class="hero-slide is-active" src="/SPR_WEBSITE/images/spr_background.jpg" alt="" fetchpriority="high" onerror="this.src = '/SPR_WEBSITE/images/fallback.svg'; this.onerror = null;">
+      
+        <img class="hero-slide" src="/SPR_WEBSITE/images/hero/hero-field.jpg" alt="" loading="lazy" onerror="this.src = '/SPR_WEBSITE/images/fallback.svg'; this.onerror = null;">
+      
+        <img class="hero-slide" src="/SPR_WEBSITE/images/hero/hero-stand.jpg" alt="" loading="lazy" onerror="this.src = '/SPR_WEBSITE/images/fallback.svg'; this.onerror = null;">
+      
+    </div>
+  
 
   <a href="/SPR_WEBSITE/" class="home">
     
@@ -633,7 +651,7 @@
         
                   
                   <div class="timeline-cover">
-                    <img src="/SPR_WEBSITE/images/background.jpg" alt="2025 赛季 合影" loading="lazy" onerror="this.src = '/SPR_WEBSITE/images/fallback.svg'; this.onerror = null;">
+                    <img src="/SPR_WEBSITE/images/spr_background.jpg" alt="2025 赛季 合影" loading="lazy" onerror="this.src = '/SPR_WEBSITE/images/fallback.svg'; this.onerror = null;">
                   </div>
                   
         
