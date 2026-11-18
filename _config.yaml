@@ -8,6 +8,7 @@ header: images/spr_background.jpg
 header-slides:
   - images/spr_background.jpg
   - images/hero/hero-group.jpg
+  - images/hero/hero-team.jpg
   - images/hero/hero-field.jpg
   - images/hero/hero-stand.jpg
 footer:  images/spr_footer.jpg
