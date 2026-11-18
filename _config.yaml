@@ -13,15 +13,15 @@ slogan: 九楼灯火长明,赛场我们必赢
 #   current     成员页展示的赛季号，对应 _members 里的 seasons / echelon
 #   events_year 首页「近期赛程」筛选的年份，对应 _events 里的 date
 season:
-  current: "24"
-  events_year: 2025
+  current: "27"
+  events_year: 2026
 
 # site social media and other links
 # 新增联系方式时注意：github 需要完整 URL，微信/邮箱不是链接的不要放这里
 links:
   # email: your-address@example.com
   github: https://github.com/darkcome6/SPR_WEBSITE
-  bilibili: "475402455"
+  bilibili: "1489728412"
 ## jekyll settings
 
 # front matter defaults

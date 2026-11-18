@@ -14,16 +14,22 @@
       </div>
       <div class="timeline-card">
         {% if s.cover %}
+                  {% if s_url != "" %}
           <a class="timeline-cover" href="{{ s_url | relative_url }}" aria-label="{{ s.title }}">
             <img src="{{ s.cover | relative_url }}" alt="{{ s.title }} 合影" loading="lazy" {% include fallback.html %}>
           </a>
+                  {% else %}
+                  <div class="timeline-cover">
+                    <img src="{{ s.cover | relative_url }}" alt="{{ s.title }} 合影" loading="lazy" {% include fallback.html %}>
+                  </div>
+                  {% endif %}
         {% endif %}
         <div class="timeline-text">
           <h3 class="timeline-title">{{ s.title }}</h3>
           <p class="timeline-badges">
             {% if s.rank %}<span class="badge">{{ s.rank }}</span>{% endif %}
             {% if s.award %}<span class="badge">{{ s.award }}</span>{% endif %}
-            <span class="badge">{{ s_members.size }} 名成员</span>
+                        {% if s_members.size > 0 %}<span class="badge">{{ s_members.size }} 名成员</span>{% endif %}
           </p>
           {% if s.summary %}<p class="timeline-summary">{{ s.summary }}</p>{% endif %}
           {% if s_url != "" %}

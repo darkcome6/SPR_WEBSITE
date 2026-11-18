@@ -2,6 +2,8 @@
 ---
 
 {% assign season = site.season.current %}
+{% assign current_season = site.data.seasons | where: "season", season | first %}
+{% assign season_year = current_season.year | default: season %}
 
 # 中国石油大学 SPR 战队
 
@@ -16,22 +18,25 @@
     <span class="stats-value">{{ site.members | size }}</span>
     <span class="stats-label">名成员</span>
   </div>
+  {% if site.awards.size > 0 %}
   <div class="stats-item">
     <span class="stats-value">{{ site.awards | size }}</span>
     <span class="stats-label">项荣誉</span>
   </div>
+  {% endif %}
+  {% if site.events.size > 0 %}
   <div class="stats-item">
     <span class="stats-value">{{ site.events | size }}</span>
     <span class="stats-label">场比赛</span>
   </div>
+  {% endif %}
 </div>
-
 {%
   include button.html
   type="docs"
   text="Bilibili"
   icon="fa-brands fa-bilibili"
-  link="https://space.bilibili.com/475402455"
+  link="https://space.bilibili.com/1489728412"
 %}
 {%
   include button.html
@@ -41,10 +46,11 @@
 %}
 {%
   include button.html
-  type="docs"
-  text="微信公众号"
+  link="contact"
+  text="微信公众号：SPR机器人队"
   icon="fa-brands fa-weixin"
-  link="https://mp.weixin.qq.com/s/Zrk4PRRGSimJG9bVDj3Zsg"
+  style="bare"
+  flip=true
 %}
 
 {% include section.html %}
@@ -57,7 +63,7 @@
 
 {% include section.html %}
 
-## 20{{ season }} 赛季的我们
+## {{ season_year }} 赛季的我们
 
 {% include member-wall.html limit=30 %}
 

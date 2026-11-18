@@ -1,16 +1,25 @@
 {%- comment -%}
 成员墙：按赛季铺头像，用于首页快速建立「这些人一起打过比赛」的印象。
 参数：season（默认 site.season.current）、limit（默认不限制）、exclude_role（默认排除指导老师）
+该赛季没有成员时显示提示文字，而不是留一片空白。
 {%- endcomment -%}
 {% assign wall_season = include.season | default: site.season.current %}
 {% assign wall_exclude = include.exclude_role | default: "指导老师" %}
 {% capture wall_filter %}seasons: {{ wall_season }}{% endcapture %}
-{% assign wall = site.members | data_filter_exact: wall_filter %}
+{% assign wall_entry = site.data.seasons | where: "season", wall_season | first %}
+{% assign wall_year = wall_entry.year | default: wall_season %}
 
+{% assign wall_candidates = site.members | where_exp: "m", "m.role != wall_exclude" %}
+{% assign wall = wall_candidates | data_filter_exact: wall_filter %}
+
+{% if wall.size > 0 %}
 <div class="member-wall">
   {% for m in wall limit: include.limit %}
-    {% if m.role != wall_exclude %}
-      {% include portrait.html lookup=m.slug style="tiny" %}
-    {% endif %}
+    {% include portrait.html lookup=m.slug style="tiny" %}
   {% endfor %}
 </div>
+{% else %}
+<p class="center" style="opacity: 0.6">
+  {{ wall_year }} 赛季成员名单整理中，可先查看<a href="{{ "/team/history" | relative_url }}">历届成员</a>。
+</p>
+{% endif %}

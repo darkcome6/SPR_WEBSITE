@@ -85,9 +85,9 @@ bundle exec jekyll serve --baseurl ""
 新增赛季时在最前面加一条即可：
 
 ```yaml
-- season: "25"      # 赛季号，与 _members 的 seasons 对应
-  year: 2025
-  title: 2025 赛季
+- season: "28"      # 赛季号，与 _members 的 seasons 对应
+  year: 2028
+  title: 2028 赛季
   rank: 全国赛十六强   # 显示在徽章与历史成绩
   award: 国家级二等奖
   rank_value: 16      # 只用于积分榜趋势图，填全国赛名次数字
@@ -109,8 +109,8 @@ bundle exec jekyll serve --baseurl ""
 1. 改 `_config.yaml`：
    ```yaml
    season:
-     current: "25"      # 成员页展示的赛季号
-     events_year: 2025  # 首页「近期赛程」的年份
+     current: "27"      # 成员页与首页展示的赛季号
+     events_year: 2026  # 首页「近期赛程」的年份
    ```
 2. 给新成员建 `_members/<姓名>.md`，`seasons` 写赛季号数组：
    ```yaml

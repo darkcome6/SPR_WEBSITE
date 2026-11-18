@@ -1,4 +1,4 @@
-# 赛季主线数据：首页时间轴与成果页「历史成绩 / 积分榜排名」共用这一份。
+# 赛季主线数据：首页时间轴、成果页历史成绩/积分榜、成员页共用这一份。
 # 从新到旧排列，每年新增赛季时在最前面加一条。
 #   season      赛季号（与 _members 的 seasons 对应）
 #   year        年份
@@ -10,39 +10,39 @@
 #   summary     一句话赛季记忆
 #   url         点击跳转的页面，留空则卡片不可点击
 
+- season: "27"
+  year: 2027
+  title: 2027 赛季
+  rank:
+  award:
+  rank_value:
+  cover: images/cheer.jpg
+  summary:
+  url: team/
+
+- season: "26"
+  year: 2026
+  title: 2026 赛季
+  rank:
+  award:
+  rank_value:
+  cover: images/spr_cheer.jpg
+  summary:
+  url:
+
 - season: "25"
   year: 2025
   title: 2025 赛季
   rank:
   award:
   rank_value:
-  cover: images/cheer.jpg
+  cover: images/background.jpg
   summary:
   url:
 
 - season: "24"
   year: 2024
   title: 2024 赛季
-  rank:
-  award:
-  rank_value:
-  cover: images/spr_cheer.jpg
-  summary:
-  url: team/
-
-- season: "23"
-  year: 2023
-  title: 2023 赛季
-  rank:
-  award:
-  rank_value:
-  cover: images/background.jpg
-  summary:
-  url: team/23-season/
-
-- season: "22"
-  year: 2022
-  title: 2022 赛季
   rank:
   award:
   rank_value:
