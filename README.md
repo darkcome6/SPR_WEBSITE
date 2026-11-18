@@ -52,6 +52,28 @@
 
 `tools/validate_content.py` 会检查 `CNAME`（如果存在）是否为单行裸域名。
 
+## 国内访问与外部依赖
+
+站点托管在 GitHub Pages（境外 Fastly 节点），**能不能直连取决于运营商和时段**。
+换自定义域名不改变这一点：域名解析出来还是同一批 IP，买域名只解决「网址好记」。
+
+要稳定国内访问只能换托管地：境内（必须 ICP 备案，个人备案做「战队官网」容易被驳回）
+或香港/新加坡 VPS（免备案，约 24 元/月起，需自建 Nginx/Caddy）。
+
+为了少踩「页面能打开但图表空白、图标变方块」的坑，这些依赖已放进 `_vendor/` 自托管：
+
+| 依赖 | 位置 | 加载范围 |
+| --- | --- | --- |
+| ECharts 5.5.1 | `_vendor/echarts.min.js` | 只有成果页（有图表的页面）才加载 |
+| Font Awesome 6.5.0 | `_vendor/fontawesome/` + `_vendor/webfonts/` | 全站，异步加载 |
+
+仍在用境外 CDN 的部分（失效只影响观感，不影响读内容）：
+Google Fonts 的 Barlow / Roboto Mono（会回退到系统字体）、
+`unpkg.com` 的 tippy / popper / mark.js（提示框与站内搜索高亮）、
+`cdn.jsdelivr.net` 的 pygments 主题（代码块配色）。
+
+`_vendor/` 已在 `_config.yaml` 的 `include` 里，否则下划线开头的目录默认不会被发布。
+
 ## 本地预览
 
 ```bash

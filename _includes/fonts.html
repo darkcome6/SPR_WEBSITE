@@ -5,7 +5,8 @@
 <link href="{{ googlefonts }}" rel="stylesheet">
 
 <!-- Font Awesome icons (load asynchronously due to size) -->
-{% assign fontawesome = "https://use.fontawesome.com/releases/v6.5.0/css/all.css" %}
+<!-- Font Awesome icons（自托管，避免境外 CDN 被墙导致图标变方块；仍异步加载） -->
+{% assign fontawesome = "/_vendor/fontawesome/all.css" | relative_url %}
 <link
   href="{{ fontawesome }}"
   rel="stylesheet"

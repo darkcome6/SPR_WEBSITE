@@ -15,6 +15,11 @@ nav:
 {% assign history = site.data.seasons | where_exp: "s", "s.rank != nil or s.award != nil" %}
 {% assign rank_chart = site.data.seasons | where_exp: "s", "s.rank_value != nil" %}
 
+{%- comment -%}
+图表库只在有图表的页面加载（自托管，1 MB，别让每个页面都背）
+{%- endcomment -%}
+<script src="{{ "/_vendor/echarts.min.js" | relative_url }}"></script>
+
 # {% include icon.html icon="fa-solid fa-microscope" %}我们的成果
 
 {% if history.size > 0 %}
